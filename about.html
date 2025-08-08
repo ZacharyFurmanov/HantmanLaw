@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Hantman & Associates</title>
+  <style>
+    /* —— Base, header, hero, containers: copied from index.html for 1:1 style —— */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#fff;background:#000;overflow-x:hidden}
+    .header{background:rgba(0,0,0,.95);backdrop-filter:blur(20px);color:#fff;padding:1rem 0;position:fixed;width:100%;top:0;z-index:1000;border-bottom:1px solid rgba(255,255,255,.1);transition:all .3s ease}
+    .nav-container{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
+    .logo{font-size:2.2rem;font-weight:300;letter-spacing:8px;color:#fff;font-family:'Times New Roman',serif}
+    .logo-subtitle{font-size:.9rem;letter-spacing:4px;font-weight:300;margin-top:-5px;opacity:.8}
+    .nav-menu{display:flex;list-style:none;gap:3rem}
+    .nav-menu a{color:#fff;text-decoration:none;font-weight:300;font-size:1rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s ease;position:relative}
+    .nav-menu a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:#fff;transition:width .3s ease}
+    .nav-menu a:hover::after{width:100%}
+    .nav-menu a:hover{opacity:.7}
+    .contact-phone{font-size:1rem;font-weight:300;letter-spacing:1px}
+    .hero{height:60vh;min-height:420px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('https://www.travelandleisure.com/thmb/91pb8LbDAUwUN_11wATYjx5oF8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/new-york-city-evening-NYCTG0221-52492d6ccab44f328a1c89f41ac02aea.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;margin-top:70px}
+    .hero::after{content:'';position:absolute;inset:0;backdrop-filter:blur(2px);background:rgba(0,0,0,.2)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.3) 100%);z-index:1}
+    .hero-content{max-width:1000px;padding:2rem;z-index:3;animation:fadeInUp 1.2s ease-out}
+    .hero-title{font-size:3.2rem;font-weight:300;letter-spacing:10px;margin-bottom:1rem;color:#fff;font-family:'Times New Roman',serif;line-height:1.2}
+    .hero-description{font-size:1.05rem;font-weight:300;line-height:1.8;opacity:.85;max-width:800px;margin:0 auto}
+    .container{max-width:1400px;margin:0 auto;padding:0 2rem}
+    .section{padding:6rem 0;position:relative}
+    .section-title{text-align:center;font-size:3rem;font-weight:300;letter-spacing:4px;margin-bottom:3rem;color:#fff;text-transform:uppercase}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+
+    /* —— About page sections —— */
+    .glass{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(14px)}
+    .about-section{background:#111;position:relative}
+    .about-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent)}
+
+    .about-lead{font-size:1.15rem;font-weight:300;line-height:2;opacity:.92}
+    .about-card{padding:2rem;margin:1rem 0}
+    .about-card h3{font-size:1.4rem;font-weight:400;letter-spacing:1px;margin-bottom:1rem;text-transform:uppercase}
+    .about-card p{opacity:.9}
+
+    /* Lists style for cases */
+    .case-group{margin-top:2rem}
+    .case-subtitle{font-size:1.2rem;font-weight:400;letter-spacing:1px;margin:1.5rem 0 .75rem;opacity:.95;text-transform:uppercase}
+    .case-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:1rem}
+    .case-item{padding:1rem 1.25rem;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+    .case-item p{font-size:.98rem;line-height:1.6;opacity:.95}
+
+    /* Representative Cases */
+    .rep-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:1rem}
+    .rep-item{padding:1rem 1.25rem;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+
+    /* Contact block reused from index feel, but slimmer */
+    .contact-section{background:#000}
+    .contact-cta{margin-top:2rem;text-align:center}
+    .cta-button{display:inline-block;background:transparent;color:#fff;padding:1rem 2.2rem;text-decoration:none;border:2px solid #fff;font-weight:300;font-size:.95rem;letter-spacing:2px;text-transform:uppercase;transition:all .4s ease;position:relative;overflow:hidden}
+    .cta-button::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:#fff;transition:left .4s ease;z-index:-1}
+    .cta-button:hover::before{left:0}
+    .cta-button:hover{color:#000}
+
+    /* Footer (same vibe) */
+    .footer{background:#000;padding:4rem 0 2rem;text-align:center;border-top:1px solid rgba(255,255,255,.1)}
+    .footer-copyright{font-size:.8rem;opacity:.5}
+
+    /* Responsive tweaks */
+    @media (max-width:768px){
+      .hero{min-height:360px}
+      .hero-title{font-size:2.2rem;letter-spacing:6px}
+      .container{padding:0 1rem}
+      .case-list,.rep-list{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <div>
+        <div class="logo">HANTMAN</div>
+        <div class="logo-subtitle">& ASSOCIATES</div>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="attorneys.html">Attorneys</a>
+        <a href="clients.html">Clients</a>
+        <a href="services.html">Services</a>
+        <a href="press.html">Press</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="contact-phone">(212) 252-3999</div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-title">ABOUT THE FIRM</div>
+      <div class="hero-description">
+        A litigation-forward practice with deep experience across civil and white-collar matters — serving businesses, foreign governments, and individuals.
+      </div>
+    </div>
+  </section>
+
+  <!-- Firm Profile -->
+  <section class="section about-section">
+    <div class="container">
+      <h2 class="section-title">Firm Profile</h2>
+      <div class="about-card glass">
+        <p class="about-lead">
+          At Hantman & Associates, we provide legal services to businesses, foreign governments, and private individuals. While the firm specializes in complex federal and state civil litigation, the firm also handles major white collar criminal defense cases and has a general practice that involves all aspects of matrimonial, contract, and corporate law. The firm also shares a close affiliation with other firms that handle immigration and personal injury.
+        </p>
+        <p class="about-lead" style="margin-top:1.25rem;">
+          This firm has successfully handled law suits against Montel Williams, the New York Yankees (jury verdict of over $1 million dollars), Steven Seagal, Don King Productions, Shelly Finkel, Gary Shaw, Danny De Vito, Anna Nicole Smith, Fabio, and others. We have also won the largest private defamation verdict in the history of the state of New Jersey.
+        </p>
+        <p class="about-lead" style="margin-top:1.25rem;">
+          Our firm is comprised of a multi lingual staff to ensure that you are well represented.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reported Decisions -->
+  <section class="section" style="background:#0a0a0a;">
+    <div class="container">
+      <h2 class="section-title">Reported Decisions</h2>
+
+      <div class="about-card glass case-group">
+        <h3 class="case-subtitle">Federal Cases</h3>
+        <div class="case-list">
+          <!-- Each item one case -->
+          <div class="case-item"><p>GSGSB, Inc. v. New York Yankees – 862 F.Supp. 1160, S.D.N.Y., September 28, 1994 (NO. 91 CIV. 1803 (SWK))</p></div>
+          <div class="case-item"><p>GSGSB, Inc. v. New York Yankees – Not Reported in F.Supp., 1995 WL 507246, S.D.N.Y., August 28, 1995 (NO. 91 CIV. 1803 (SWK))</p></div>
+          <div class="case-item"><p>GSGSB, Inc. v. New York Yankees – Not Reported in F.Supp., 1996 WL 456044, S.D.N.Y., August 12, 1996 (NO. 91CIV.1803(SWK)(JCF))</p></div>
+          <div class="case-item"><p>GSGSB, Inc. v. New York Yankees – 122 F.3d 1056, 1997 WL 383543 (Table), C.A.2 (N.Y.), July 09, 1997 (NO. 95-9272, 96-9202)</p></div>
+          <div class="case-item"><p>Nasso v. Steven Seagal – 263 F.Supp.2d 596, E.D.N.Y., April 11, 2003 (NO. CV-03-0443(CPS))</p></div>
+          <div class="case-item"><p>U.S. v. Nasso – 2004 WL 2595901, E.D.N.Y., November 16, 2004 (NO. 02-CR-606-FB)</p></div>
+          <div class="case-item"><p>U.S. v. Gotti – 322 F.Supp.2d 230, E.D.N.Y., June 22, 2004 (NO. 02-CR-606)</p></div>
+          <div class="case-item"><p>Bezuszka v. L.A. Models, Inc. – 2006 WL 770526, S.D.N.Y., March 24, 2006 (NO. 04 CIV. 7703 (NRB))</p></div>
+          <div class="case-item"><p>Mouchantaf v. International Modeling and Talent Ass’n – 368 F.Supp.2d 303, S.D.N.Y., May 06, 2005 (NO. 05 CIV. 377 (MGC))</p></div>
+          <div class="case-item"><p>Madison Models, Inc. v. Casta – 2003 WL 21978628, S.D.N.Y., August 20, 2003 (NO. 01 CIV.9323)</p></div>
+          <div class="case-item"><p>Brown v. Quiniou – 2003 WL 1888743, S.D.N.Y., April 16, 2003 (NO. 02 CIV. 4630)</p></div>
+          <div class="case-item"><p>Tall v. Time is Always Now, Inc. – 1999 WL 1129062, S.D.N.Y., December 08, 1999 (NO. 98 CIV. 8060)</p></div>
+          <div class="case-item"><p>McBride v. The Source Merchandising, LLC – 2002 WL 2012610, S.D.N.Y., September 03, 2002 (NO. 01 CIV. 8103)</p></div>
+          <div class="case-item"><p>Wainwright v. Matrix Asset Advisors, Inc. – 2006 WL 531241, S.D.N.Y., March 06, 2006 (NO. 05 CIV.227)</p></div>
+          <div class="case-item"><p>U.S. v. Jaramillo – 745 F.2d 1245, C.A.9 (Nev.), October 23, 1984 (NO. 84-1091)</p></div>
+          <div class="case-item"><p>U.S. v. Pinto – 838 F.2d 1566, C.A.11 (Fla.), March 11, 1988 (NO. 86-5478)</p></div>
+          <div class="case-item"><p>U.S. v. Bazuaye – 82 Fed.Appx. 734, 2003 WL 22965071, C.A.2 (N.Y.), December 12, 2003 (NO. 03-1581)</p></div>
+          <div class="case-item"><p>U.S. v. Bazuaye – 2004 WL 784835, S.D.N.Y., April 12, 2004 (NO. 03 CR. 12)</p></div>
+          <div class="case-item"><p>In re Ski Train Fire in Kaprun Austria on November 11, 2000 – 499 F.Supp.2d 437, S.D.N.Y., June 19, 2007</p></div>
+          <div class="case-item"><p>In re Ski Train Fire in Kaprun Austria on November 11, 2000 – 2007 WL 2398697, S.D.N.Y., August 16, 2007 (NO. 03-CV-8960)</p></div>
+          <div class="case-item"><p>Beckerman v. Heiman – 2006 WL 1663034, S.D.N.Y., June 16, 2006 (NO. 05 CIV. 5234)</p></div>
+          <div class="case-item"><p>In re Engel – 124 F.3d 567, C.A.3 (N.J.), September 03, 1997 (NO. 96-5256)</p></div>
+        </div>
+      </div>
+
+      <div class="about-card glass case-group">
+        <h3 class="case-subtitle">State Cases</h3>
+        <div class="case-list">
+          <div class="case-item"><p>Nasso v. Loeb & Loeb, LLP – 19 A.D.3d 465, 796 N.Y.S.2d 256, 2005 N.Y. Slip Op. 05038 (June 13, 2005)</p></div>
+          <div class="case-item"><p>Velez v. Betancur – 2005 WL 3005764, N.J.Super.A.D., November 10, 2005</p></div>
+          <div class="case-item"><p>Shelton v. Elite Model Management, Inc. – 11 Misc.3d 345, 812 N.Y.S.2d 745 (Sept 06, 2005)</p></div>
+          <div class="case-item"><p>1/5th L.P. v. HL One, LLC – 23 A.D.3d 170, 804 N.Y.S.2d 27 (Nov 01, 2005)</p></div>
+          <div class="case-item"><p>Winterview Inc. v. Karin Models, LLC – 294 A.D.2d 120 (May 02, 2002)</p></div>
+          <div class="case-item"><p>Barbazza v. International Motor Sports Ass’n, Inc. – 245 Ga.App. 790 (Sept 06, 2000)</p></div>
+          <div class="case-item"><p>Jill S. v. Steven S. – 43 A.D.3d 724 (Sept 20, 2007)</p></div>
+          <div class="case-item"><p>Porter and Ripa Associates, Inc. v. 200 Madison Ave. Real Estate Group – 167 N.J.Super. 48 (Mar 23, 1979)</p></div>
+          <div class="case-item"><p>Wilkenfeld v. Rowen – 262 A.D.2d 28 (June 03, 1999)</p></div>
+          <div class="case-item"><p>Grieco v. Employees’ Retirement System of City of Newark – 173 N.J.Super. 474 (May 06, 1980)</p></div>
+          <div class="case-item"><p>Porter and Ripa Associates, Inc. v. 200 Madison Ave. Real Estate Group – 167 N.J.Super. 48 (Mar 23, 1979)</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Representative Cases -->
+  <section class="section about-section">
+    <div class="container">
+      <h2 class="section-title">Representative Cases</h2>
+      <div class="about-card glass">
+        <div class="rep-list">
+          <div class="rep-item"><p>Successfully represented professional basketball player Andre Iguodala against a former financial advisor arising out of the mismanagement of funds (Superior Court, New Jersey, 2012).</p></div>
+          <div class="rep-item"><p>Representing Adriana Ferreyr against George Soros for intentional infliction of emotional distress, promissory estoppel and fraud arising out of a long term relationship.</p></div>
+          <div class="rep-item"><p>Obtained $1.2M verdict for GSGSB against the New York Yankees after a three-week jury trial (S.D.N.Y., Nov 1995).</p></div>
+          <div class="rep-item"><p>Successfully represented a witness and potential defendant in the “Emperors Club” matter involving Governor Spitzer.</p></div>
+          <div class="rep-item"><p>Successfully represented Navy SEALs Spencer Calvin, Ed O’Brien, and Marine Officer Drew Knight (Superior Courts in CA).</p></div>
+          <div class="rep-item"><p>Successfully represented boxer Francisco Palacios against Don King Productions (Supreme Court, State of New York).</p></div>
+          <div class="rep-item"><p>Well-known graphic designer vs. White Rose for breach of a confidentiality agreement (U.S. District Court, D.N.J.).</p></div>
+          <div class="rep-item"><p>Successfully represented LA Models in a class action (Superior Court, State of California, 2011).</p></div>
+          <div class="rep-item"><p>Julius R. Nasso v. Steven Seagal: six-year breach of contract/loan recoupment (E.D.N.Y. No. 03-Civ-442).</p></div>
+          <div class="rep-item"><p>Defense for Julius R. Nasso against claims by Steven Seagal (E.D.N.Y. Case No. CV 07 4055).</p></div>
+          <div class="rep-item"><p>Gotham Boxing & Cedric Kushner v. Finkel et al. (Supreme Court, NY; Index No. 601479-07).</p></div>
+          <div class="rep-item"><p>Substantial verdict in California case against Montel Williams (mental distress).</p></div>
+          <div class="rep-item"><p>Represented the Colombian Government in a high-profile adoption/guardianship matter (Superior Court, NJ).</p></div>
+          <div class="rep-item"><p>Model matters: Scott Barnhill (Next), Chris Collins (“Phat Farm” use), Madison Models v. Laetitia Casta, and disputes among Next, Boss, Ford, IMG.</p></div>
+          <div class="rep-item"><p>$150,000 settlement for model injured at Le Bar Bat (Supreme Court, NY County).</p></div>
+          <div class="rep-item"><p>Former manager of “Fabio” in Gaynor v. Lanzoni (S.D.N.Y., Magistrate Judge Naomi Buchwald).</p></div>
+          <div class="rep-item"><p>NY Model Management settlement for mass staff/models defection to DNA Models (Supreme Court, NY County).</p></div>
+          <div class="rep-item"><p>Fabrizio Barbazza (F1 driver) personal injury/contract (Supreme Court, Hall County, GA).</p></div>
+          <div class="rep-item"><p>Shareholder derivative/fraud matters (e.g., Rowan/Kimmel et al.; State Court, NY).</p></div>
+          <div class="rep-item"><p>Michael Caridi v. Danny DeVito (finder’s fee; settled post-filing).</p></div>
+          <div class="rep-item"><p>Hunter Singer v. Al Pacino dispute regarding investment in “Salomaybe” (resolved pre-suit).</p></div>
+          <div class="rep-item"><p>Wallid Ismail v. Pro Elite et al. (C.D. Cal.; fraud/partnership dispute before Judge Alan Feess).</p></div>
+          <div class="rep-item"><p>White Chocolate Mgmt. & Reed Wallace v. “Rampage” Jackson et al. (NY Supreme Court, 2007).</p></div>
+          <div class="rep-item"><p>Patrick V. Palmer v. Globalive & Langer (S.D.N.Y.; Heller Ehrman for defense).</p></div>
+          <div class="rep-item"><p>Universal Marine Medical Supply v. Select Health et al. (E.D.N.Y., 2007).</p></div>
+          <div class="rep-item"><p>Julius R. Nasso v. Loeb & Loeb (breach of fiduciary duty).</p></div>
+          <div class="rep-item"><p>Julius R. Nasso v. L.A. Times (defamation).</p></div>
+          <div class="rep-item"><p>Appointed Special Criminal Counsel by U.S. Bankruptcy Court (D.N.J.) in post-conviction murder matter.</p></div>
+          <div class="rep-item"><p>Multimillion-dollar probate settlement (Palm Beach, FL; Hershel William v. Estate Eppes Hawes Williams Fahnstock).</p></div>
+          <div class="rep-item"><p>Largest private libel verdict in New Jersey (Judge Norris Harding, Middlesex County).</p></div>
+          <div class="rep-item"><p>Second-largest cocaine conspiracy case (D. Nev.; Judge Harry Claiborne), argued before the Ninth Circuit.</p></div>
+          <div class="rep-item"><p>Antitrust & civil rights case (S.D.N.Y.; Judge Whitman Knapp).</p></div>
+          <div class="rep-item"><p>Gun customs defense (S.D. Fla.) and Fifth Circuit appeal.</p></div>
+          <div class="rep-item"><p>Failure to file tax return case (D.N.J.; Magistrate Judge Haneke) — house arrest sentence.</p></div>
+          <div class="rep-item"><p>Cocaine conspiracy defense (E.D. Pa.; Judge Joyner).</p></div>
+          <div class="rep-item"><p>Academy Bus shareholder derivative/specific performance/valuation (Chancery Div., NJ).</p></div>
+          <div class="rep-item"><p>Source code dispute (shareholder derivative; NJ; Judge Bachman).</p></div>
+          <div class="rep-item"><p>Multiple matrimonial matters in NY Supreme Court.</p></div>
+          <div class="rep-item"><p>Commercial landlord/tenant litigation (NY; Judge Emily Goodman).</p></div>
+          <div class="rep-item"><p>Probate matter for widow of Jerome Minskoff (NY; Judge Renée Roth).</p></div>
+          <div class="rep-item"><p>Sex discrimination suit against Chaus & Co. (Hudson County, NJ).</p></div>
+          <div class="rep-item"><p>Attorney fee dispute vs. Morrison Cohen et al. (NY Supreme Court).</p></div>
+          <div class="rep-item"><p>David Granoff PR v. Anna Nicole Smith (breach of contract; NY Supreme Court).</p></div>
+          <div class="rep-item"><p>INA Insurance subrogation/indemnification (White Plains, NY Supreme Court).</p></div>
+          <div class="rep-item"><p>Defense of sexual harassment (Bergen County, NJ Superior Court).</p></div>
+          <div class="rep-item"><p>Contract dispute vs. Summit Solomon, Feldesman, et al. (Hudson County, NJ).</p></div>
+          <div class="rep-item"><p>Maggie Minskoff v. Nordstern Insurance — 100% recovery + $20k consequentials (Rosenman & Colin opposing).</p></div>
+          <div class="rep-item"><p>Recovery of funds seized for BSA violation (currency reporting).</p></div>
+          <div class="rep-item"><p>Multimillion-dollar settlement in Washington state shareholder freeze-out case.</p></div>
+        </div>
+
+        <div class="contact-cta">
+          <a href="index.html#contact" class="cta-button">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-copyright">
+        © Hantman & Associates. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hantman & Associates — Services</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #ffffff; background-color: #000000; overflow-x: hidden; }
+        /* Header */
+        .header { background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        .logo { font-size: 2.2rem; font-weight: 300; letter-spacing: 8px; color: #ffffff; font-family: 'Times New Roman', serif; }
+        .logo-subtitle { font-size: 0.9rem; letter-spacing: 4px; font-weight: 300; margin-top: -5px; opacity: 0.8; }
+        .nav-menu { display: flex; list-style: none; gap: 3rem; }
+        .nav-menu a { color: white; text-decoration: none; font-weight: 300; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease; position: relative; }
+        .nav-menu a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: #ffffff; transition: width 0.3s ease; }
+        .nav-menu a:hover::after { width: 100%; }
+        .nav-menu a:hover { opacity: 0.7; }
+        .contact-phone { font-size: 1rem; font-weight: 300; letter-spacing: 1px; }
+        /* Hero Section */
+        .hero { height: 55vh; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
+                    url('https://www.travelandleisure.com/thmb/91pb8LbDAUwUN_11wATYjx5oF8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/new-york-city-evening-NYCTG0221-52492d6ccab44f328a1c89f41ac02aea.jpg');
+                background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; backdrop-filter: blur(2px); background: rgba(0, 0, 0, 0.2); }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%); z-index: 1; }
+        .hero-content { max-width: 1000px; padding: 2rem; z-index: 3; animation: fadeInUp 1.2s ease-out; }
+        .hero-title { font-size: 4rem; font-weight: 300; letter-spacing: 12px; margin-bottom: 1.5rem; color: #ffffff; font-family: 'Times New Roman', serif; animation: fadeInUp 1.5s ease-out 0.3s both; line-height: 1.2; text-transform: uppercase; }
+        .hero-description { font-size: 1.2rem; font-weight: 300; line-height: 1.8; opacity: 0.8; max-width: 900px; margin: 0 auto; }
+        .cta-button { display: inline-block; background: transparent; color: white; padding: 1.2rem 3rem; text-decoration: none; border: 2px solid white; font-weight: 300; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.4s ease; position: relative; overflow: hidden; animation: fadeInUp 1.5s ease-out 1.2s both; }
+        .cta-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: white; transition: left 0.4s ease; z-index: -1; }
+        .cta-button:hover::before { left: 0; }
+        .cta-button:hover { color: black; }
+        /* Main */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+        .section { padding: 6rem 0; position: relative; }
+        .section-title { text-align: center; font-size: 3rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 4rem; color: #ffffff; text-transform: uppercase; }
+        .about-section { background: #111111; position: relative; }
+        .about-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); }
+        .services-section { background: #0a0a0a; position: relative; }
+        .service-copy { max-width: 1000px; margin: 0 auto; font-size: 1.1rem; font-weight: 300; line-height: 1.9; opacity: 0.9; }
+        .service-copy h3 { font-size: 1.4rem; font-weight: 400; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .service-copy ul { margin: 1rem 0 2rem 1.2rem; }
+        .service-copy li { margin: 0.5rem 0; }
+        /* Footer */
+        .footer { background: #000000; padding: 4rem 0 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .office-locations { display: flex; justify-content: center; gap: 4rem; margin-bottom: 3rem; }
+        .office { text-align: center; }
+        .office h4 { font-size: 1.2rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: 2px; text-transform: uppercase; }
+        .office p { font-weight: 300; opacity: 0.7; }
+        .footer-text { font-size: 1rem; font-weight: 300; line-height: 1.8; opacity: 0.8; max-width: 800px; margin: 0 auto 2rem; }
+        .footer-disclaimer { font-size: 0.9rem; font-weight: 300; opacity: 0.6; line-height: 1.6; max-width: 1000px; margin: 0 auto 2rem; }
+        .footer-copyright { font-size: 0.8rem; opacity: 0.5; }
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px);} to { opacity: 1; transform: translateY(0);} }
+        .fade-in { opacity: 0; animation: fadeInUp 1s ease-out forwards; }
+        .fade-in.visible { animation-delay: 0.2s; }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 2.4rem; letter-spacing: 8px; }
+            .section-title { font-size: 2rem; }
+            .container { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div>
+                <div class="logo">HANTMAN</div>
+                <div class="logo-subtitle">& ASSOCIATES</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="attorneys.html">Attorneys</a>
+                <a href="clients.html">Clients</a>
+                <a href="services.html">Services</a>
+                <a href="press.html">Press</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <div class="contact-phone">(212) 252-3999</div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-title">SERVICES</div>
+            <div class="hero-description">Practical, results‑driven counsel across litigation, family law, entertainment, crisis management, and corporate matters.</div>
+            <a href="#services" class="cta-button">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services Sections -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <h2 class="section-title">What We Do</h2>
+
+            <!-- 1. Litigation, Arbitration & Mediation -->
+            <div class="service-copy fade-in">
+                <h3>Litigation, Arbitration & Mediation</h3>
+                <p>On behalf of corporations and individuals, the firm has litigated disputes in a variety of matters involving contract disputes, shareholder derivative suits, libel suits, suits involving the ownership of intellectual property (including the ownership of a “source code” in a computer related case), personal injury cases, matrimonial, and white collar criminal defense cases throughout the country.</p>
+                <p>Representative of our firm’s broad experience in the litigation area is the firm’s success in obtaining one of the largest private libel verdicts in New Jersey’s history, the successful resolution of a multimillion dollar probate matter in Palm Beach, Florida, and the successful handling of white collar criminal defense matters in federal courts in New York, Florida, and Las Vegas, Nevada.</p>
+                <p>Most notably, we have achieved successes against Amazon, Kevin Porter, Miami New Times, Women Model Management, New York City, Montel Williams, the New York Yankees (jury verdict of over $1 million dollars), Steven Seagal, Don King Productions, Shelly Finkel, Gary Shaw, Danny De Vito, Anna Nicole Smith, Fabio, John Thomas Financial, Trump Model Management, Snooki, Rick Ross, Magic Johnson, Atlantic City Housing Authority (Arbitration Award over $2 million dollars), LA Times, Pro Elite, Wladimir Klitschko, and countless others reflected in Mr. Hantman’s Resume.</p>
+                <p>Arbitration and Mediation are recognized as alternative forms of dispute resolution.</p>
+                <p>In this regard, principals of our firm have experience in all phases of arbitration and mediation, particularly with the American Arbitration Association.</p>
+                <p>The type of matters subject to arbitration and mediation include complex construction matters and employee disputes, such as wrongful severance and/or termination.</p>
+                <p>Our integrity and dedication to you, the client, makes us your BEST choice for legal representation!</p>
+            </div>
+
+            <!-- 2. Family Law -->
+            <div class="service-copy fade-in">
+                <h3>Family Law</h3>
+                <p>Our mediators focus on techniques to assist the parties to reach their own decisions. Our mediators understand that their role is to advise the parties on ‘how’ to choose, not ‘what’ to choose. A choice is, in and of itself, a negotiation between many moving parts. We assist the parties to find the choices that make sense, fulfill needs and interconnect positively with the choices of others who will be impacted by change.</p>
+                <h3>International Divorce</h3>
+                <p>International divorce is a highly specialized field of law and requires both experience and contacts in overseas governments and law. Our global team of experienced attorneys act effectively and decisively to resolve all international divorce issues including child custody and complex financial matters.</p>
+                <h3>Caroline Langley, Esq. — Of Counsel</h3>
+                <p>Caroline Langley has achieved the highest accolades in international family law through her diverse practice in three jurisdictions: England & Wales, the United States and Hong Kong. She is committed to finding solutions to bring together families who are a world apart. Global divorce brings with it a myriad of issues from custody to intricate financial matters which Caroline successfully resolves by optimizing her extensive knowledge and international network. Her cases have spanned the world, ranging from Europe, South Africa, North America, South America, Canada to Asia. Her goal is to provide successful results while creating an environment of accountability, trust and respect.</p>
+            </div>
+
+            <!-- 3. Fashion, Entertainment & Sports -->
+            <div class="service-copy fade-in">
+                <h3>Fashion, Entertainment & Sports</h3>
+                <p>The firm also represents, or has represented, bookers, agents, and principals of many of the major modeling agencies. The firm not only prepares, reviews, and negotiates contracts regarding all contractual aspects of the business, such as contracts between the agency and models, bookers and the agency, and the agency and third parties, but perhaps, more importantly, handles litigation involving the interpretation, enforceability, and breaches of these contracts.</p>
+                <p>Hantman & Associates also specializes in resolving or litigating issues that arise when bookers and/or models leave one agency for another. The firm has been successful in recouping all advances and damages occasioned by this type of “defection” and/or defending against these types of actions that are all too common in the fashion industry.</p>
+            </div>
+
+            <!-- 4. Crisis Management & Lobbying -->
+            <div class="service-copy fade-in">
+                <h3>Crisis Management & Lobbying</h3>
+                <p>Hantman & Associates recognizes that often a client’s problem not only involves but transcends legal issues and that an effective coordinated effort to obtain a result may often involve an association with investigative firms involving former NAVY SEALS, FBI, DEA, CIA and Law Enforcement Personnel and public relation firms.</p>
+            </div>
+
+            <!-- 5. Corporate Documents, Transactions & Securities -->
+            <div class="service-copy fade-in">
+                <h3>Corporate Documents, Transactions & Securities</h3>
+                <p>Hantman & Associates recognizes the importance of avoiding litigation and protecting the business and legal rights of its clients. The first step is through the preparation of contracts and corporate documents that are clear and concise coupled with the experience and knowledge to properly advise clients.</p>
+                <p>In this regard the firm represents and advises all types of business entities, including sole proprietorships, partnerships, limited liability companies and closely held and publicly owned corporations. The firm acts as local counsel for national corporations and many local and regional companies. Our services include corporate formation and finance, corporate reorganizations, mergers and acquisitions, negotiation and preparation of all types of contracts and representation of parties in intracorporate relationships and shareholder disputes. Our clients are engaged in diverse industries including manufacturing, transportation, computer software and hardware, real estate, franchising, sports and entertainment, agencies and professional services. Our firm’s expertise with corporation and LLC’s allows us to craft integrated business and legal solutions for our clients.</p>
+                <p>However, when litigation cannot be avoided, our firm is experienced in representing our corporate clients in business and shareholder disputes, and pursuing and/or defending FINRA claims and defending against SEC Enforcement Actions. Our firm has also successfully pursued Investment Banks and Broker Dealers in lawsuits in both State and Federal Courts including John Thomas Financial and Lighthouse Financial Group.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="office-locations">
+                <div class="office">
+                    <h4>New York</h4>
+                    <p>212-252-3999</p>
+                </div>
+                <div class="office">
+                    <h4>Florida</h4>
+                    <p>By Appointment</p>
+                </div>
+                <div class="office">
+                    <h4>New Jersey</h4>
+                    <p>By Appointment</p>
+                </div>
+            </div>
+            <div class="footer-text">Hantman & Associates provides tailored legal services to businesses, public figures, and families across the U.S. and abroad.</div>
+            <div class="footer-disclaimer">This website is attorney advertising. Prior results do not guarantee a similar outcome. Nothing on this site should be construed as legal advice, nor does visiting this site create an attorney‑client relationship.</div>
+            <div class="footer-copyright">© <span id="year"></span> Hantman & Associates</div>
+        </div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,392 @@
+
+
+<style>
+  /* Clients page: match index.html UI/UX */
+  .section { padding: 6rem 0; position: relative; }
+  .section-title { text-align:center; font-size:3rem; font-weight:300; letter-spacing:4px; margin-bottom:3rem; color:#ffffff; text-transform:uppercase; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .client-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 1.75rem 1.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .client-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transition: left .6s ease;
+    pointer-events: none;
+  }
+  .client-card:hover::before { left: 100%; }
+  .client-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.05);
+  }
+  .client-card h3 {
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: .5px;
+    color: #ffffff;
+    text-transform: none;
+  }
+  .client-card p {
+    font-size: .95rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+
+  /* Section background divider line like index about-section */
+  #clients.about-section { background: #111111; position: relative; }
+  #clients.about-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  }
+
+  /* Responsive tweaks to mirror index */
+  @media (max-width: 768px) {
+    .container { padding: 0 1rem; }
+    .section-title { font-size: 2rem; letter-spacing: 2px; }
+    .card-grid { gap: 1rem; }
+    .client-card { padding: 1.25rem; }
+  }
+/* --- NAVBAR styles from index.html (copied or adapted here for context, if needed) --- */
+.navbar {
+  width: 100%;
+  background: #181818;
+  padding: 0.8rem 0;
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar .nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+  padding: 0.25em 0.5em;
+  border-radius: 2px;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #e3c77b;
+  background: rgba(255,255,255,0.07);
+}
+@media (max-width: 768px) {
+  .navbar .nav-list {
+    gap: 1rem;
+    font-size: 1rem;
+  }
+}
+</style>
+
+<nav style="background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);position:fixed;top:0;left:0;width:100%;z-index:1000;box-shadow:0 2px 8px 0 rgba(0,0,0,0.16);min-height:62px;display:flex;align-items:center;">
+  <div style="width:100%;max-width:1500px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;">
+    <div style="flex:1;display:flex;justify-content:flex-start;">
+      <ul style="display:flex;gap:2.2rem;list-style:none;margin:0;padding:0;">
+        <li><a href="index.html" class="nav-link" style="text-transform:uppercase;text-decoration:none;color:#fff;font-size:1.08rem;letter-spacing:1.5px;font-weight:400;padding-bottom:2px;transition:all .19s;border-bottom:2.5px solid transparent;display:inline-block;">Home</a></li>
+        <li><a href="about.html" class="nav-link" style="text-transform:uppercase;text-decoration:none;color:#fff;font-size:1.08rem;letter-spacing:1.5px;font-weight:400;padding-bottom:2px;transition:all .19s;border-bottom:2.5px solid transparent;display:inline-block;">About</a></li>
+        <li><a href="attorneys.html" class="nav-link" style="text-transform:uppercase;text-decoration:none;color:#fff;font-size:1.08rem;letter-spacing:1.5px;font-weight:400;padding-bottom:2px;transition:all .19s;border-bottom:2.5px solid transparent;display:inline-block;">Attorneys</a></li>
+        <li><a href="clients.html" class="nav-link active" style="text-transform:uppercase;text-decoration:none;color:#fff;font-size:1.08rem;letter-spacing:1.5px;font-weight:400;padding-bottom:2px;transition:all .19s;border-bottom:2.5px solid #e3c77b;display:inline-block;">Clients</a></li>
+        <li><a href="contact.html" class="nav-link" style="text-transform:uppercase;text-decoration:none;color:#fff;font-size:1.08rem;letter-spacing:1.5px;font-weight:400;padding-bottom:2px;transition:all .19s;border-bottom:2.5px solid transparent;display:inline-block;">Contact</a></li>
+        <li><a href="services.html" class="nav-link" style="text-transform:uppercase;text-decoration:none;color:#fff;font-size:1.08rem;letter-spacing:1.5px;font-weight:400;padding-bottom:2px;transition:all .19s;border-bottom:2.5px solid transparent;display:inline-block;">Services</a></li>
+      </ul>
+    </div>
+    <div style="flex:0 0 auto;display:flex;justify-content:center;width:160px;">
+      <a href="index.html" style="display:inline-block;text-align:center;">
+        <img src="logo.png" alt="Hantman Law Logo" style="height:38px;max-width:120px;vertical-align:middle;filter:brightness(1.15);">
+      </a>
+    </div>
+    <div style="flex:1;"></div>
+  </div>
+</nav>
+<div style="height:62px;"></div>
+
+<section id="clients" class="section about-section fade-in">
+  <div class="container">
+    <h1 class="section-title">Clients</h1>
+    <div class="card-grid">
+      <div class="client-card">
+        <h3>CapitalKeys</h3>
+      </div>
+      <div class="client-card">
+        <h3>Greg Olsen</h3>
+        <p>GHO Ventures – “Space Traveler”</p>
+      </div>
+      <div class="client-card">
+        <h3>William H. C. Chang</h3>
+        <p>Co-owner San Francisco Giants and D.C. United Soccer Team / Chairman of Westlake International Group</p>
+      </div>
+      <div class="client-card">
+        <h3>The Colombian Foreign Ministry</h3>
+      </div>
+      <div class="client-card">
+        <h3>Colombian Consulate</h3>
+      </div>
+      <div class="client-card">
+        <h3>Colombian Trade Bureau</h3>
+      </div>
+      <div class="client-card">
+        <h3>G.S.G.S.B.</h3>
+        <p>Architects and engineers for such notable projects as Giants Stadium, the Statue of Liberty, and Ellis Island</p>
+      </div>
+      <div class="client-card">
+        <h3>Fabrizio Barbazza</h3>
+        <p>1985 Rookie of the Year and former Formula One Driver</p>
+      </div>
+      <div class="client-card">
+        <h3>Antonio Hermann</h3>
+        <p>race car driver and former Finance Minister Brazil</p>
+      </div>
+      <div class="client-card">
+        <h3>Movie Producer Julius R. Nasso</h3>
+      </div>
+      <div class="client-card">
+        <h3>Hockey Player Jeremy Roenick</h3>
+      </div>
+      <div class="client-card">
+        <h3>Luca Luca</h3>
+      </div>
+      <div class="client-card">
+        <h3>Atrium</h3>
+        <p>New York – Sam Ben Avraham</p>
+      </div>
+      <div class="client-card">
+        <h3>New York Helicopter Charter Inc.</h3>
+      </div>
+      <div class="client-card">
+        <h3>Backbone-Pictures Films</h3>
+      </div>
+      <div class="client-card">
+        <h3>Eric Leaver</h3>
+        <p>Leaver Group</p>
+      </div>
+      <div class="client-card">
+        <h3>White Chocolate Management</h3>
+      </div>
+      <div class="client-card">
+        <h3>Wallid Ismail</h3>
+        <p>world champion mixed martial artist</p>
+      </div>
+      <div class="client-card">
+        <h3>Gotham Boxing</h3>
+        <p>Cedric Kushner</p>
+      </div>
+      <div class="client-card">
+        <h3>Marc Roberts</h3>
+      </div>
+      <div class="client-card">
+        <h3>New York Model Management</h3>
+      </div>
+      <div class="client-card">
+        <h3>L.A. Model Management</h3>
+      </div>
+      <div class="client-card">
+        <h3>Karin Model Management</h3>
+      </div>
+      <div class="client-card">
+        <h3>Pauline’s Model Management</h3>
+      </div>
+      <div class="client-card">
+        <h3>Madison Model Management</h3>
+      </div>
+      <div class="client-card">
+        <h3>APM Model Management</h3>
+      </div>
+      <div class="client-card">
+        <h3>Spectrum Model Management</h3>
+      </div>
+      <div class="client-card">
+        <h3>Model &amp; Manager</h3>
+        <p>Christie Heinrich</p>
+      </div>
+      <div class="client-card">
+        <h3>Joel Wilkenfeld</h3>
+      </div>
+      <div class="client-card">
+        <h3>David Wilkenfeld</h3>
+      </div>
+      <div class="client-card">
+        <h3>Hershe Entertainment</h3>
+        <p>South Korea</p>
+      </div>
+      <div class="client-card">
+        <h3>5 G Wireless</h3>
+      </div>
+      <div class="client-card">
+        <h3>Jamison Capital</h3>
+      </div>
+      <div class="client-card">
+        <h3>Via One Technologies</h3>
+      </div>
+      <div class="client-card">
+        <h3>Actor Tony Schiena</h3>
+      </div>
+      <div class="client-card">
+        <h3>Agent Andrew Broz</h3>
+      </div>
+      <div class="client-card">
+        <h3>Agent Ben Garcia</h3>
+      </div>
+      <div class="client-card">
+        <h3>Producer Randy Fields</h3>
+      </div>
+      <div class="client-card">
+        <h3>Photographer Iris Briosch</h3>
+      </div>
+      <div class="client-card">
+        <h3>Photographer Judson Baker</h3>
+      </div>
+      <div class="client-card">
+        <h3>Photographer Greg Lotus</h3>
+      </div>
+      <div class="client-card">
+        <h3>John Robert Powers</h3>
+      </div>
+      <div class="client-card">
+        <h3>Model, Scott Barnhill</h3>
+      </div>
+      <div class="client-card">
+        <h3>Model Chris Collins</h3>
+      </div>
+      <div class="client-card">
+        <h3>Model</h3>
+        <p>DJ Sky Nellor</p>
+      </div>
+      <div class="client-card">
+        <h3>Model Leticia Birkheuer</h3>
+      </div>
+      <div class="client-card">
+        <h3>Model Daniela Pestova</h3>
+      </div>
+      <div class="client-card">
+        <h3>Rubenstein &amp; Co. Public Relations</h3>
+      </div>
+      <div class="client-card">
+        <h3>David Granoff Public Relations</h3>
+      </div>
+      <div class="client-card">
+        <h3>Nora Lawler Public Relations</h3>
+      </div>
+      <div class="client-card">
+        <h3>James Hewitt</h3>
+      </div>
+      <div class="client-card">
+        <h3>Art House</h3>
+      </div>
+      <div class="client-card">
+        <h3>Vue Photo Reps</h3>
+      </div>
+      <div class="client-card">
+        <h3>Oliver Piro Photo Reps</h3>
+      </div>
+      <div class="client-card">
+        <h3>Visage</h3>
+      </div>
+      <div class="client-card">
+        <h3>Fashion How</h3>
+      </div>
+      <div class="client-card">
+        <h3>Float</h3>
+        <p>Max Burgio</p>
+      </div>
+      <div class="client-card">
+        <h3>Show</h3>
+      </div>
+      <div class="client-card">
+        <h3>Leslie Bernard</h3>
+      </div>
+      <div class="client-card">
+        <h3>ManRay Restaurant</h3>
+      </div>
+      <div class="client-card">
+        <h3>Protection Plus Corporation Inc.</h3>
+      </div>
+      <div class="client-card">
+        <h3>Leslie Dick World Wide Ltd.</h3>
+        <p>Real Estate</p>
+      </div>
+      <div class="client-card">
+        <h3>Publisher Joe DiCristofaro</h3>
+      </div>
+      <div class="client-card">
+        <h3>Harlan Berger</h3>
+        <p>Real Estate</p>
+      </div>
+      <div class="client-card">
+        <h3>Schnabel Construction Company</h3>
+      </div>
+      <div class="client-card">
+        <h3>The Luxe Group</h3>
+      </div>
+      <div class="client-card">
+        <h3>Canal Carting</h3>
+      </div>
+      <div class="client-card">
+        <h3>Hanver SA.</h3>
+      </div>
+      <div class="client-card">
+        <h3>“High Voltage”</h3>
+      </div>
+      <div class="client-card">
+        <h3>Franklin Mining</h3>
+      </div>
+      <div class="client-card">
+        <h3>Manager</h3>
+        <p>Producer Tyrone Barrington</p>
+      </div>
+      <div class="client-card">
+        <h3>World Fighting Championships</h3>
+      </div>
+      <div class="client-card">
+        <h3>Maggie Minskoff</h3>
+      </div>
+      <div class="client-card">
+        <h3>Jill Schottenstein</h3>
+      </div>
+      <div class="client-card">
+        <h3>Linden Airport Management</h3>
+      </div>
+      <div class="client-card">
+        <h3>New York Helicopter</h3>
+      </div>
+      <div class="client-card">
+        <h3>Nutritional Products International</h3>
+      </div>
+      <div class="client-card">
+        <h3>Perf Go Green</h3>
+      </div>
+    </div>
+  </div>
+</section>

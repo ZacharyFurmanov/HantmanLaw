@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attorneys - Hantman & Associates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: #ffffff;
+            font-family: 'Times New Roman', serif;
+            text-decoration: none;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-top: -5px;
+            opacity: 0.8;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 300;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            opacity: 1;
+        }
+
+        .contact-phone {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
+                        url('https://www.travelandleisure.com/thmb/91pb8LbDAUwUN_11wATYjx5oF8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/new-york-city-evening-NYCTG0221-52492d6ccab44f328a1c89f41ac02aea.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(2px);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .page-hero-content {
+            z-index: 3;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-family: 'Times New Roman', serif;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        /* Attorney Cards */
+        .attorneys-section {
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .attorneys-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        .attorney-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 4rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            position: relative;
+        }
+
+        .attorney-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .attorney-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .attorney-card:hover::before {
+            left: 100%;
+        }
+
+        .attorney-header {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            padding: 3rem;
+            align-items: start;
+        }
+
+        .attorney-photo {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 4rem;
+            transition: all 0.4s ease;
+        }
+
+        .attorney-card:hover .attorney-photo {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .attorney-info h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .attorney-title {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .attorney-description {
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .attorney-description p {
+            margin-bottom: 1.5rem;
+        }
+
+        .attorney-details {
+            padding: 0 3rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .detail-section h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-list {
+            list-style: none;
+        }
+
+        .detail-list li {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .detail-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border: 2px solid white;
+            font-weight: 300;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: white;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            color: black;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .attorney-header {
+                grid-template-columns: 250px 1fr;
+                gap: 2rem;
+            }
+
+            .attorney-photo {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .attorney-header {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .attorney-photo {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+            }
+
+            .attorney-details {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .attorney-card {
+                margin-bottom: 3rem;
+            }
+
+            .attorney-header,
+            .attorney-details {
+                padding: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div>
+                    <div class="logo">HANTMAN</div>
+                    <div class="logo-subtitle">& ASSOCIATES</div>
+                </div>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="attorneys.html" class="active">Attorneys</a>
+                <a href="clients.html">Clients</a>
+            </nav>
+            <div class="contact-phone">(212) 684-3933</div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1 class="page-title">Attorneys</h1>
+            <p class="page-subtitle">Our Legal Team</p>
+        </div>
+    </section>
+
+    <!-- Attorneys Section -->
+    <section class="section attorneys-section">
+        <div class="container">
+            
+            <!-- Robert Hantman -->
+            <div class="attorney-card fade-in">
+                <div class="attorney-header">
+                    <div class="attorney-photo"><img src="headshot_images/robert_hantmant.jpeg" alt="Robert Hantman" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="attorney-info">
+                        <h2>Robert Hantman</h2>
+                        <div class="attorney-title">Founding Partner</div>
+                        <div class="attorney-description">
+                            <p>With almost forty years of experience as a trial attorney, Robert Hantman is the founding partner of the Firm. Mr. Hantman specializes in civil-commercial – including FINRA and SEC matters – and selective criminal litigation. He has served as counsel to both public and private companies and was outside counsel to the Colombian Consulate for over 14 years.</p>
+                            
+                            <p>On a selective basis he has also been involved in matrimonial, defamation, negligence and probate litigation, and Hague Convention Cases involving complex and diverse issues and works in crisis management situations with public relation firms, lobbyists, and former specials agents of the FBI, DEA and CIA along with former NAVY SEALs, Special Forces and Delta team members when necessary.</p>
+                            
+                            <p>Well versed in intellectual property, corporate law, entertainment, fashion law and contract law, Roberts's years of litigation experience and hands – on experience make him an invaluable asset in litigation or as an advisor.</p>
+                            
+                            <p>Mr. Hantman has successfully handled countless high-profile cases, including law suits involving Montel Williams, the New York Yankees (jury verdict of over $1 million dollars), Steven Seagal, Trump Model Management, Rick Ross, Fabio, Next, Ford Model Management, Next, DNA, Magic Johnson, One West, Don King Productions, Rampage Jackson, Vladimir Klitsko, Shelly Finkel, "Snooki", Gary Shaw, Danny De Vito, Anna Nicole Smith, Pro Elite, Lighthouse Financial Group, John Thomas Financial, and many others.</p>
+                            
+                            <p>Mr. Hantman's Firm has also won the largest private defamation verdict in the history of the State of New Jersey. His reported cases are legion as more detailed in the Firms website.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attorney-details">
+                    <div class="detail-section">
+                        <h3>Bar & Other Memberships</h3>
+                        <ul class="detail-list">
+                            <li>New York Bar</li>
+                            <li>New Jersey Bar</li>
+                            <li>Florida Bar</li>
+                            <li>American Bar Association</li>
+                            <li>National Association of Criminal Defense Lawyers</li>
+                            <li>New York City Criminal Defense Association</li>
+                            <li>U.S. District Courts, Southern, Middle, and Northern Districts of Florida</li>
+                            <li>U.S. District Court New York</li>
+                            <li>U.S. District Court New Jersey</li>
+                            <li>Former Adjunct Professor of Construction Law at the Benjamin N. Cardozo School of Law</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Education</h3>
+                        <ul class="detail-list">
+                            <li>University of Miami, School of Law, Juris Doctor Degree, 1975</li>
+                            <li>Hebrew University, Jerusalem, Comparative and International Law, 1972</li>
+                            <li>American University, Bachelor of Arts Degree, Political Science, Honors, 1972</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <p class="cta-text">Need help with any legal issues?</p>
+                    <a href="#contact" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Caroline Langley -->
+            <div class="attorney-card fade-in">
+                <div class="attorney-header">
+                    <div class="attorney-photo"><img src="headshot_images/caroline_langley.jpeg" alt="Caroline Langley" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="attorney-info">
+                        <h2>Caroline Langley, Esq.</h2>
+                        <div class="attorney-title">Of Counsel - Director of International Family Law</div>
+                        <div class="attorney-description">
+                            <p>A world expert in family law, founder of Family Law International and a Fellow of the International Academy of Family Lawyers, Caroline Langley is qualified and has practiced in three jurisdictions: England & Wales, Hong Kong and the USA. She has handled numerous complex international family cases in the United States, Asia, Europe, Argentina, Greece, and South Africa. With nearly three decades of experience, she is a preeminent specialist in international family law with a focus on complex international issues including the Hague Convention.</p>
+                            
+                            <p>She has worked with the US Department of State, the US Citizen Service, foreign governments and INTERPOL. She has lectured both for professional legal entities and at graduate and post-graduate levels. Caroline Langley successfully negotiates solutions for high-net-worth individuals and has appeared on CNN and FOX News. Caroline has held executive positions within the American Bar Association International Section and is a Mediator, a NITA certified trainer, a Fellow of the International Academy of Family Lawyers, and a member of the US Department of State International Child Abduction Attorney Network. Her reported cases and speaking engagements are detailed in the Firm's website.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attorney-details">
+                    <div class="detail-section">
+                        <h3>Bar & Other Memberships</h3>
+                        <ul class="detail-list">
+                            <li>England & Wales Bar</li>
+                            <li>Hong Kong</li>
+                            <li>Colorado Bar</li>
+                            <li>American Bar Association</li>
+                            <li>Hong Kong Family Law Association</li>
+                            <li>Former Professor of Law at the University of Hong Kong and the City University of Hong Kong (part-time)</li>
+                            <li>U.S. District Court 10th Circuit</li>
+                            <li>US Department of State International Child Abduction Attorney Network</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Education & Certifications</h3>
+                        <ul class="detail-list">
+                            <li>University of Lancaster, Bachelor of Science, Honors, 1984</li>
+                            <li>Barrister, England & Wales, Inns of Court, School of Law, 1989</li>
+                            <li>Barrister, Hong Kong, 1997</li>
+                            <li>Mediator, CDR Associates, 2001</li>
+                            <li>Attorney at Law, State of Colorado, 2003</li>
+                            <li>National Institute of Trial Advocacy Certified Trainer, 2003</li>
+                            <li>Attorney at Law, US District Court, 10th Circuit, 2004</li>
+                            <li>Barrister, England & Wales, Direct Access, 2016</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <p class="cta-text">Need help with any legal issues?</p>
+                    <a href="#contact" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Diana Y. Garcia -->
+            <div class="attorney-card fade-in">
+                <div class="attorney-header">
+                    <div class="attorney-photo"><img src="headshot_images/diana_garcia.jpeg" alt="Diana Y. Garcia" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="attorney-info">
+                        <h2>Diana Y. Garcia, Esq.</h2>
+                        <div class="attorney-title">Special Counsel</div>
+                        <div class="attorney-description">
+                            <p>Ms. Garcia focuses in private equity, corporate and immigration law. She has vast experience in the legal and financial fields. Before re-joining Hantman & Associates Ms. Garcia was a Vice President at Panamerican Capital Partners, which provides private equity investing and investment banking services in the infrastructure and energy fields. She was mainly involved in the management of their international infrastructure finance funds.</p>
+                            
+                            <p>From 2002 to 2005, Ms. García practiced law in New York with our firm, working in acquisitions, negotiations, due diligence and providing counsel on international law issues and immigration law to the Colombian Consulate. From 1998 to 2002, Ms. García was the Consul for Legal Affairs at the Colombian Consulate in New York. Before moving to New York, she practiced law in Bogota, Colombia.</p>
+                            
+                            <p>Ms. García received an MBA from the Yale School of Management, an LLM from Fordham Law School, and a LLB from Universidad del Rosario. She is admitted to practice law in New York State and the Republic of Colombia.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <p class="cta-text">Need help with any legal issues?</p>
+                    <a href="#contact" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Joseph J. Ferrara -->
+            <div class="attorney-card fade-in">
+                <div class="attorney-header">
+                    <div class="attorney-photo"><img src="headshot_images/joseph_ferrara.jpeg" alt="Joseph J. Ferrara" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="attorney-info">
+                        <h2>Joseph J. Ferrara</h2>
+                        <div class="attorney-title">Of Counsel</div>
+                        <div class="attorney-description">
+                            <p>Admitted to the New Jersey Bar in 1974. Admitted to the New York Bar in 1983. Practiced before New York State Courts, New Jersey State Courts, the United States District Court New Jersey, the United States District Court New York and the United States Court of Appeals Third Circuit in matters involving complex civil commercial and insurance litigation as well as commercial and residential real estate and general corporate matters.</p>
+                            
+                            <p>Represented United Food and Commercial Workers Union locals in labor and pension matters. Represented local municipal entities in school law litigation. Acted as General Counsel to Academy Bus LLC, Singer Shop-Rite Supermarkets and Emar Associates.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attorney-details">
+                    <div class="detail-section">
+                        <h3>Bar & Other Memberships</h3>
+                        <ul class="detail-list">
+                            <li>New Jersey State Bar</li>
+                            <li>New York State Bar</li>
+                            <li>Supreme Court of the United States</li>
+                            <li>Third Circuit Court of Appeals</li>
+                            <li>United States District Court New Jersey</li>
+                            <li>United States District Court New York (Southern District)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Education</h3>
+                        <ul class="detail-list">
+                            <li>Seton Hall University School of Law, Juris Doctor - 1974</li>
+                            <li>Seton Hall University, Bachelor of Science, Business Administration - 1970</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <p class="cta-text">Need help with any legal issues?</p>
+                    <a href="#contact" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Shannon Harvey -->
+            <div class="attorney-card fade-in">
+                <div class="attorney-header">
+                    <div class="attorney-photo">
+                        <img src="headshot_images/shannon_harvey.jpeg" alt="Shannon Harvey" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="attorney-info">
+                        <h2>Shannon Harvey, Esq.</h2>
+                        <div class="attorney-title">Of Counsel</div>
+                        <div class="attorney-description">
+                            <p>Shannon Harvey, Esq., a Pennsylvania native, is the principal attorney of the Miami-based Law Offices of Shannon Harvey, P.A., established in 2007. Ms. Harvey is licensed in New York and Florida. She practices probate, guardianship, intellectual property, entertainment law, and contract litigation. She serves as a distinguished panelist on various programs for the American Bar Association.</p>
+                            <p>Ms. Harvey’s office served as Private Counsel for the U.S. Department of Justice (2011–2014), representing the U.S. in breach of contract lawsuits. Prior to that, she was In-House Counsel for a nursing home management company, supporting families in probate and guardianship matters. She also volunteers with Vitas Hospice care.</p>
+                            <p>Shannon has significant experience in entertainment law, handling copyright infringement, trademark registration, and film investment disputes. She was instrumental in launching the “Hollywood Florida Film Festival.”</p>
+                            <p>She created the YouTube series “Legal Fox™ TV,” offering a humorous look at lawsuits of interest, which has screened in multiple Web Fests and is listed on IMDb.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="attorney-details">
+                    <div class="detail-section">
+                        <h3>Bar & Other Memberships</h3>
+                        <ul class="detail-list">
+                            <li>Florida State Bar</li>
+                            <li>New York Bar</li>
+                            <li>United States District Court, Southern District of Florida</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h3>Education</h3>
+                        <ul class="detail-list">
+                            <li>University of Miami School of Law – Juris Doctor, Cum Laude, 2002</li>
+                            <li>Universidad San Pablo CEU – Human Rights/Global Insolvency, Summer 2000</li>
+                            <li>Temple University – B.A., Magna Cum Laude, Criminal Justice, 1999</li>
+                            <li>Université de la Sorbonne – Language Program, Summer 1998</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cta-section">
+                    <p class="cta-text">Need help with any legal issues?</p>
+                    <a href="#contact" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Katherine Kleyman -->
+            <div class="attorney-card fade-in">
+                <div class="attorney-header">
+                    <div class="attorney-photo">
+                        <img src="headshot_images/katherine_kleyman.jpeg" alt="Katherine Kleyman" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="attorney-info">
+                        <h2>Katherine Kleyman</h2>
+                        <div class="attorney-title">Law Clerk</div>
+                        <div class="attorney-description">
+                            <p>Katherine Kleyman handles civil litigation matters involving employment, commercial, and family law. She earned her Juris Doctor from Fordham Law School in 2020 after graduating Magna Cum Laude in Political Science from Fordham University.</p>
+                            <p>She served as Treasurer for the Jewish Law Students Association and chaired events for the Anti-Trafficking Legal Advocacy Society. Katherine also assisted domestic violence victims in NYC Family Courts and externed for the Lord Chief Justice in Belfast, Ireland.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="attorney-details">
+                    <div class="detail-section">
+                        <h3>Bar & Other Memberships</h3>
+                        <ul class="detail-list">
+                            <li>New York State Bar</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h3>Education</h3>
+                        <ul class="detail-list">
+                            <li>Fordham University School of Law – Juris Doctor, 2020</li>
+                            <li>Fordham University – B.S., Political Science, Magna Cum Laude</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cta-section">
+                    <p class="cta-text">Need help with any legal issues?</p>
+                    <a href="#contact" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Nyall Cook -->
+            <div class="attorney-card fade-in">
+                <div class="attorney-header">
+                    <div class="attorney-photo">
+                        <img src="headshot_images/nyall_cook.jpeg" alt="Nyall Cook" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="attorney-info">
+                        <h2>Nyall Cook</h2>
+                        <div class="attorney-title">Associate</div>
+                        <div class="attorney-description">
+                            <p>Nyall Cook specializes in entertainment, international, corporate, and business law. He holds a B.S. in Operations Management from the University of Colorado Boulder and earned his J.D. from Brooklyn Law School, where he received numerous awards and scholarships.</p>
+                            <p>He served as Associate Managing Editor of the Brooklyn Journal of International Law and Vice President of the Entertainment and Sports Law Society. Nyall studied comparative law in Beijing and speaks Mandarin Chinese. He was admitted to the New York Bar in 2020.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="attorney-details">
+                    <div class="detail-section">
+                        <h3>Bar & Other Memberships</h3>
+                        <ul class="detail-list">
+                            <li>New York State Bar</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h3>Education</h3>
+                        <ul class="detail-list">
+                            <li>Brooklyn Law School – Juris Doctor</li>
+                            <li>University of Colorado Boulder – B.S., Operations Management; Minor in Mandarin, 2015</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cta-section">
+                    <p class="cta-text">Need help with any legal issues?</p>
+                    <a href="#contact" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+                header.style.backdropFilter = 'blur(25px)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+            }
+        });
+    </script>
+</body>
+</html>
