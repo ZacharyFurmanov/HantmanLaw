@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hantman & Associates - Professional Legal Services</title>
 
-        <!-- Social share (Open Graph & Twitter) -->
-        <meta property="og:title" content="Hantman & Associates — Professional Legal Services">
-        <meta property="og:description" content="Dynamic, aggressive representation in litigation, family law, fashion & entertainment, crisis management, and corporate law.">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://www.hantmanlaw.com/">
-        <meta property="og:image" content="images/nyc-share.jpg">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Hantman & Associates — Professional Legal Services">
-        <meta name="twitter:description" content="Dynamic, aggressive representation in litigation, family law, fashion & entertainment, crisis management, and corporate law.">
-        <meta name="twitter:image" content="images/nyc-share.jpg">
+    <!-- Social share (Open Graph & Twitter) -->
+    <meta property="og:title" content="Hantman & Associates — Professional Legal Services">
+    <meta property="og:description"
+        content="Dynamic, aggressive representation in litigation, family law, fashion & entertainment, crisis management, and corporate law.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.hantmanlaw.com/">
+    <meta property="og:image"
+        content="https://www.travelandleisure.com/thmb/91pb8LbDAUwUN_11wATYjx5oF8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/new-york-city-evening-NYCTG0221-52492d6ccab44f328a1c89f41ac02aea.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hantman & Associates — Professional Legal Services">
+    <meta name="twitter:description"
+        content="Dynamic, aggressive representation in litigation, family law, fashion & entertainment, crisis management, and corporate law.">
+    <meta name="twitter:image"
+        content="https://www.travelandleisure.com/thmb/91pb8LbDAUwUN_11wATYjx5oF8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/new-york-city-evening-NYCTG0221-52492d6ccab44f328a1c89f41ac02aea.jpg">
 
-        <!-- Favicon / Touch Icon -->
-        <link rel="icon" type="image/png" sizes="32x32" href="images/nyc-favicon-32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="images/nyc-favicon-16.png">
-        <link rel="apple-touch-icon" href="images/nyc-apple-touch.png">
-        <meta name="theme-color" content="#000000">
+    <!-- Favicon / Touch Icon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/nyc-favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/nyc-favicon-16.png">
+    <link rel="apple-touch-icon" href="images/nyc-apple-touch.png">
+    <meta name="theme-color" content="#000000">
     <style>
         * {
             margin: 0;
@@ -119,11 +124,51 @@
             letter-spacing: 1px;
         }
 
+        /* Mobile menu toggle (hidden on desktop) */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #fff;
+        }
+
+        /* Mobile dropdown panel (revealed when open) */
+        .nav-menu.open {
+            display: flex;
+            position: fixed;
+            top: 64px;
+            /* matches header height */
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding: 1.25rem 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.96);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-menu.open a {
+            font-size: 1.05rem;
+            padding: 0.25rem 0;
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
-                        url('https://www.travelandleisure.com/thmb/91pb8LbDAUwUN_11wATYjx5oF8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/new-york-city-evening-NYCTG0221-52492d6ccab44f328a1c89f41ac02aea.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+                url('https://www.travelandleisure.com/thmb/91pb8LbDAUwUN_11wATYjx5oF8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/new-york-city-evening-NYCTG0221-52492d6ccab44f328a1c89f41ac02aea.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -164,7 +209,8 @@
         }
 
         .hero-title {
-            font-size: 5rem;
+            font-size: clamp(2.4rem, 8vw, 5rem);
+            /* was 5rem */
             font-weight: 300;
             letter-spacing: 12px;
             margin-bottom: 3rem;
@@ -405,17 +451,83 @@
         }
 
         /* Our Expertise horizontal cards */
-        .expertise-card { text-align: center; padding: 1.25rem 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(14px); transition: all 0.3s ease; }
-        .expertise-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); }
-        .service-thumb { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,0.85); box-shadow: 0 8px 24px rgba(0,0,0,0.3); display: block; margin: 0 auto 0.9rem; }
-        .expertise-card h3 { font-size: 1.2rem; font-weight: 600; letter-spacing: 0.5px; line-height: 1.25; margin: 0.6rem 0 0.6rem; text-transform: none; }
-        .learn-more { display: inline-block; margin-top: 0.4rem; padding: 0.6rem 1rem; border: 1.2px solid rgba(255,255,255,0.65); color: #fff; text-decoration: none; letter-spacing: 1px; font-size: 0.85rem; font-weight: 300; text-transform: uppercase; transition: all 0.3s ease; background: transparent; }
-        .learn-more:hover { border-color: #fff; background: #fff; color: #000; }
-        @media (max-width: 1024px) { .service-thumb { width: 130px; height: 130px; } }
-        @media (max-width: 768px) { .expertise-card { padding: 1.5rem 1rem; } .expertise-card h3 { font-size: 1.3rem; } }
+        .expertise-card {
+            text-align: center;
+            padding: 1.25rem 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .service-thumb {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            display: block;
+            margin: 0 auto 0.9rem;
+        }
+
+        .expertise-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            line-height: 1.25;
+            margin: 0.6rem 0 0.6rem;
+            text-transform: none;
+        }
+
+        .learn-more {
+            display: inline-block;
+            margin-top: 0.4rem;
+            padding: 0.6rem 1rem;
+            border: 1.2px solid rgba(255, 255, 255, 0.65);
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .learn-more:hover {
+            border-color: #fff;
+            background: #fff;
+            color: #000;
+        }
+
+        @media (max-width: 1024px) {
+            .service-thumb {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .expertise-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .expertise-card h3 {
+                font-size: 1.3rem;
+            }
+        }
 
         @media (min-width: 1280px) {
-            .services-grid { grid-template-columns: repeat(5, 1fr); }
+            .services-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
         }
 
         /* Testimonials */
@@ -450,7 +562,10 @@
             backdrop-filter: blur(10px);
         }
 
-        .testimonial-card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.25); }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
 
         .testimonial-card::before {
             content: '"';
@@ -471,7 +586,8 @@
             line-height: 1.7;
             opacity: 0.9;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* show part of the review */
+            -webkit-line-clamp: 3;
+            /* show part of the review */
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -493,7 +609,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .show-more:hover { border-color: #ffffff; background: #ffffff; color: #000000; }
+
+        .show-more:hover {
+            border-color: #ffffff;
+            background: #ffffff;
+            color: #000000;
+        }
 
         .testimonial-author {
             font-weight: 400;
@@ -550,7 +671,9 @@
             text-transform: uppercase;
         }
 
-        .form-group { margin-bottom: 1rem; }
+        .form-group {
+            margin-bottom: 1rem;
+        }
 
         .form-group label {
             display: block;
@@ -580,7 +703,10 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
-        .form-group textarea { height: 90px; resize: vertical; }
+        .form-group textarea {
+            height: 90px;
+            resize: vertical;
+        }
 
         .submit-button {
             background: transparent;
@@ -678,6 +804,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -689,6 +816,7 @@
                 opacity: 0;
                 transform: scale(0.5);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -699,6 +827,7 @@
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
+                position: static;
             }
 
             .hero-logo {
@@ -720,7 +849,10 @@
                 font-size: 2.5rem;
             }
 
-            .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
 
             .office-locations {
                 flex-direction: column;
@@ -738,6 +870,40 @@
             .container {
                 padding: 0 1rem;
             }
+
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: clamp(1.4rem, 6vw, 1.8rem);
+                letter-spacing: 5px;
+            }
+
+            .logo-subtitle {
+                font-size: 0.8rem;
+                letter-spacing: 3px;
+            }
+
+            .header {
+                padding: 0.6rem 0;
+            }
+
+            .hero-content {
+                padding: 1.25rem;
+            }
+
+            .hero-title .ampersand {
+                font-size: clamp(1.2rem, 4.5vw, 2rem);
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
         }
 
         /* Scroll animations */
@@ -751,6 +917,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -759,7 +926,7 @@
                 <div class="logo">HANTMAN</div>
                 <div class="logo-subtitle">& ASSOCIATES</div>
             </div>
-            <nav class="nav-menu">
+            <nav class="nav-menu" id="primary-nav">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="attorneys.html">Attorneys</a>
@@ -768,6 +935,11 @@
                 <a href="press.html">Press</a>
                 <a href="index.html#contact">Contact</a>
             </nav>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <div class="contact-phone">(212) 252-3999</div>
         </div>
     </header>
@@ -781,7 +953,9 @@
                 ASSOCIATES
             </div>
             <div class="hero-description">
-                Hantman & Associates is a dynamic and aggressive firm that is oriented and devoted to providing the best personalized legal services at competitive rates. Our integrity demands that you, the client get the BEST legal representation.
+                Hantman & Associates is a dynamic and aggressive firm that is oriented and devoted to providing the best
+                personalized legal services at competitive rates. Our integrity demands that you, the client get the
+                BEST legal representation.
             </div>
             <a href="#contact" class="cta-button">Contact us today</a>
         </div>
@@ -793,11 +967,16 @@
             <h2 class="section-title">What can we help with?</h2>
             <div class="about-content">
                 <p class="about-text">
-                    Our firm understands and appreciates client concerns over delays in our legal system and the skyrocketing legal costs. In this regard, we encourage our clients to take an active role in all of our efforts in order to control costs and contribute to more favorable results.
+                    Our firm understands and appreciates client concerns over delays in our legal system and the
+                    skyrocketing legal costs. In this regard, we encourage our clients to take an active role in all of
+                    our efforts in order to control costs and contribute to more favorable results.
                 </p>
-                
+
                 <div class="highlight-text">
-                    At Hantman & Associates, we provide legal services to businesses, foreign governments, and private individuals. While the firm specializes in complex federal and state civil litigation, the firm also handles major white collar criminal defense cases and has a general practice that involves all aspects of matrimonial, contract, and corporate law.
+                    At Hantman & Associates, we provide legal services to businesses, foreign governments, and private
+                    individuals. While the firm specializes in complex federal and state civil litigation, the firm also
+                    handles major white collar criminal defense cases and has a general practice that involves all
+                    aspects of matrimonial, contract, and corporate law.
                 </div>
             </div>
         </div>
@@ -809,9 +988,11 @@
         <div class="container">
             <h2 class="section-title">Our Expertise</h2>
             <p class="services-intro">
-                Hantman & Associates, a New York based law firm with affiliated offices in Florida and New Jersey, is a dynamic and aggressive law firm that is devoted to providing our clients the best personalized legal services at competitive rates.
+                Hantman & Associates, a New York based law firm with affiliated offices in Florida and New Jersey, is a
+                dynamic and aggressive law firm that is devoted to providing our clients the best personalized legal
+                services at competitive rates.
             </p>
-            
+
             <div class="services-grid">
                 <div class="expertise-card fade-in">
                     <img class="service-thumb" src="images/litigation.jpeg" alt="Litigation, Arbitration & Mediation">
@@ -849,23 +1030,36 @@
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <p class="testimonial-text">
-                        I highly recommend Hantman & Associates Law Firm for their exceptional legal services. I was in a complicated legal situation, and their team of skilled attorneys worked tirelessly to achieve a positive outcome for my case. Their dedication to my case and commitment to achieving justice was awe-inspiring. Throughout the process, I was continually impressed by their integrity and professionalism.
+                        I highly recommend Hantman & Associates Law Firm for their exceptional legal services. I was in
+                        a complicated legal situation, and their team of skilled attorneys worked tirelessly to achieve
+                        a positive outcome for my case. Their dedication to my case and commitment to achieving justice
+                        was awe-inspiring. Throughout the process, I was continually impressed by their integrity and
+                        professionalism.
                     </p>
                     <button type="button" class="show-more" aria-expanded="false">Show More</button>
                     <div class="testimonial-author">— Spencer Calvin</div>
                 </div>
-                
+
                 <div class="testimonial-card">
                     <p class="testimonial-text">
-                        Robert Hantman is my attorney and good friend. He has handled many legal cases for me and my family over the last 10 years, including reviews of my venture capital investments and business plans. My daughter once had an urgent legal issue in San Diego that required immediate attention. Robert flew from Miami to San Diego on a Sunday evening to be in court with her on Monday. Robert goes ALL OUT for his clients, as I can testify.
+                        Robert Hantman is my attorney and good friend. He has handled many legal cases for me and my
+                        family over the last 10 years, including reviews of my venture capital investments and business
+                        plans. My daughter once had an urgent legal issue in San Diego that required immediate
+                        attention. Robert flew from Miami to San Diego on a Sunday evening to be in court with her on
+                        Monday. Robert goes ALL OUT for his clients, as I can testify.
                     </p>
                     <button type="button" class="show-more" aria-expanded="false">Show More</button>
                     <div class="testimonial-author">— Gregory H. Olsen, Ph.D.</div>
                 </div>
-                
+
                 <div class="testimonial-card">
                     <p class="testimonial-text">
-                        As a retired U.S. Navy SEAL, I've had the privilege of working with Robert Hantman of Hantman & Associates on a variety of legal issues, and I must say that their level of service and dedication to their clients is truly exceptional. Not only are they experts in the law, but they are also deeply committed to supporting Special Operations causes and charities. Robert truly cares about his clients, and I feel privileged to have had his support during some of the most challenging times in my life.
+                        As a retired U.S. Navy SEAL, I've had the privilege of working with Robert Hantman of Hantman &
+                        Associates on a variety of legal issues, and I must say that their level of service and
+                        dedication to their clients is truly exceptional. Not only are they experts in the law, but they
+                        are also deeply committed to supporting Special Operations causes and charities. Robert truly
+                        cares about his clients, and I feel privileged to have had his support during some of the most
+                        challenging times in my life.
                     </p>
                     <button type="button" class="show-more" aria-expanded="false">Show More</button>
                     <div class="testimonial-author">— Eddie Lugo, GHO Ventures</div>
@@ -885,7 +1079,7 @@
                     <div class="contact-item"><span>rhantman@hantmanlaw.com</span></div>
                     <div class="contact-item"><span>Offices: New York, Florida & New Jersey</span></div>
                 </div>
-                
+
                 <div class="contact-form">
                     <h3>Send us a Message</h3>
                     <form>
@@ -914,14 +1108,39 @@
 
     <!-- Footer -->
     <script>
-      document.querySelectorAll('.testimonial-card .show-more').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          const card = btn.closest('.testimonial-card');
-          const expanded = card.classList.toggle('expanded');
-          btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-          btn.textContent = expanded ? 'Show Less' : 'Show More';
+        document.querySelectorAll('.testimonial-card .show-more').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const card = btn.closest('.testimonial-card');
+                const expanded = card.classList.toggle('expanded');
+                btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                btn.textContent = expanded ? 'Show Less' : 'Show More';
+            });
         });
-      });
+
+        // Mobile nav toggle
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('primary-nav');
+
+        if (toggleBtn && navMenu) {
+            toggleBtn.addEventListener('click', () => {
+                const isOpen = navMenu.classList.toggle('open');
+                toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+            // Close menu when a link is clicked
+            navMenu.querySelectorAll('a').forEach(a =>
+                a.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                })
+            );
+            // Reset state when resizing back to desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('open');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
     </script>
     <footer class="footer">
         <div class="container">
