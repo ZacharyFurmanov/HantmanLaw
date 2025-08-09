@@ -42,6 +42,19 @@
         .service-copy h3 { font-size: 1.4rem; font-weight: 400; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
         .service-copy ul { margin: 1rem 0 2rem 1.2rem; }
         .service-copy li { margin: 0.5rem 0; }
+        .cta-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .cta-text {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
         /* Footer */
         .footer { background: #000000; padding: 4rem 0 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); }
         .office-locations { display: flex; justify-content: center; gap: 4rem; margin-bottom: 3rem; }
@@ -66,15 +79,15 @@
   <style>
     html{scroll-behavior:smooth}
     /* Sticky tab selector */
-    .services-tabs{z-index:1000;background:transparent;border-bottom:1px solid #eee;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+    .services-tabs{z-index:1000;background:transparent}
     .services-tabs .tabs-inner{
       display: flex;
       flex-direction: column;
       gap: .75rem;
-      align-items: center;
+      align-items: stretch;
       padding: .75rem 1rem;
       margin: 0 auto;
-      max-width: 1200px;
+      max-width: 520px;
     }
     .services-tabs .tab {
       flex: 0 0 auto;
@@ -90,7 +103,7 @@
       background: transparent;
       font-size: 1rem;
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
-      width: auto;
+      width: 100%;
       text-align: center;
     }
     .services-tabs .tab:hover {
@@ -209,6 +222,14 @@
                 <p>In this regard the firm represents and advises all types of business entities, including sole proprietorships, partnerships, limited liability companies and closely held and publicly owned corporations. The firm acts as local counsel for national corporations and many local and regional companies. Our services include corporate formation and finance, corporate reorganizations, mergers and acquisitions, negotiation and preparation of all types of contracts and representation of parties in intracorporate relationships and shareholder disputes. Our clients are engaged in diverse industries including manufacturing, transportation, computer software and hardware, real estate, franchising, sports and entertainment, agencies and professional services. Our firm’s expertise with corporation and LLC’s allows us to craft integrated business and legal solutions for our clients.</p>
                 <p>However, when litigation cannot be avoided, our firm is experienced in representing our corporate clients in business and shareholder disputes, and pursuing and/or defending FINRA claims and defending against SEC Enforcement Actions. Our firm has also successfully pursued Investment Banks and Broker Dealers in lawsuits in both State and Federal Courts including John Thomas Financial and Lighthouse Financial Group.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <p class="cta-text">Need help with a legal matter? We're here to listen.</p>
+            <a href="index.html#contact" class="cta-button">Contact Us</a>
         </div>
     </section>
 

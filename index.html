@@ -631,9 +631,12 @@
 
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 0.7fr;
-            gap: 3rem;
+            grid-template-columns: repeat(2, minmax(260px, 1fr));
+            gap: 2rem;
             align-items: start;
+            justify-items: center;
+            max-width: 960px;
+            margin: 0 auto;
         }
 
         .contact-info h3 {
@@ -643,6 +646,8 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+        .contact-info { text-align: center; }
+        .contact-item { justify-content: center; }
 
         .contact-item {
             display: flex;
@@ -652,15 +657,19 @@
             font-size: 1.1rem;
             font-weight: 300;
         }
+        .contact-item a { color: inherit; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.35); padding-bottom: 2px; }
+        .contact-item a:hover { border-bottom-color: rgba(255,255,255,0.8); }
 
         .contact-form {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
+            padding: 2rem;
+            border-radius: 12px;
             backdrop-filter: blur(20px);
             max-width: 460px;
             width: 100%;
-            justify-self: end;
+            justify-self: center;
+            text-align: left;
         }
 
         .contact-form h3 {
@@ -670,6 +679,17 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+        /* Nicer form layout */
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        @media (min-width: 640px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+        .form-grid .full { grid-column: 1 / -1; }
+
+        .form-group input, .form-group textarea { border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.15) inset; }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.6); }
+        .form-group textarea { height: 140px; }
+
+        .submit-row { display: flex; justify-content: center; margin-top: .5rem; }
+        .submit-row .submit-button { min-width: 220px; }
 
         .form-group {
             margin-bottom: 1rem;
@@ -1075,31 +1095,35 @@
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>Get in Touch</h3>
-                    <div class="contact-item"><span>212-684-3933</span></div>
-                    <div class="contact-item"><span>rhantman@hantmanlaw.com</span></div>
+                    <div class="contact-item"><a href="tel:+12126843933">212-684-3933</a></div>
+                    <div class="contact-item"><a href="mailto:rhantman@hantmanlaw.com">rhantman@hantmanlaw.com</a></div>
                     <div class="contact-item"><span>Offices: New York, Florida & New Jersey</span></div>
                 </div>
 
                 <div class="contact-form">
                     <h3>Send us a Message</h3>
                     <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" autocomplete="name" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+                            </div>
+                            <div class="form-group full">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="How can we help?" required>
+                            </div>
+                            <div class="form-group full">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                        <div class="submit-row">
+                            <button type="submit" class="submit-button">Send Message</button>
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-button">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -1144,4 +1168,4 @@
     </script>
     <footer class="footer">
         <div class="container">
-            <div class="
+            <p class="footer-disclaimer">Our integrity and dedication to you, the client, makes us your BEST choice for legal representation! The materials at this site have been prepared by Hantman & Associates for information purposes only and should not be construed as legal advice or legal opinion on any specific facts or circumstances. Transmission of the information is not intended to create, and receipt does not constitute, an attorney-client relationship between the sender and receiver. Readers should not act upon this information without seeking professional counsel. Please do not consider there to be any attorney-client relationship between you and Hantman & Associates or any of its attorneys unless or until: (i) you have sought to retain us; (ii) we have had an opportunity to check and clear any conflicts; and (iii) you have received a letter from us confirming the retention and its scope.</p>

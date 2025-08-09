@@ -39,6 +39,14 @@
     .about-card h3{font-size:1.4rem;font-weight:400;letter-spacing:1px;margin-bottom:1rem;text-transform:uppercase}
     .about-card p{opacity:.9}
 
+    /* Two-column layout for Firm Profile */
+    .profile-grid{display:grid;grid-template-columns:1.7fr .9fr;gap:2rem;align-items:stretch}
+    @media (max-width:1024px){.profile-grid{grid-template-columns:1fr}}
+    .contact-box{padding:1.25rem;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);display:flex;flex-direction:column;justify-content:center;align-self:center}
+    .contact-box h3{font-size:1.2rem;font-weight:400;letter-spacing:1px;margin-bottom:.75rem;text-transform:uppercase}
+    .contact-box p{opacity:.9;margin-bottom:1rem}
+    .contact-box .cta-button{width:100%;text-align:center}
+
     /* Lists style for cases */
     .case-group{margin-top:2rem}
     .case-subtitle{font-size:1.2rem;font-weight:400;letter-spacing:1px;margin:1.5rem 0 .75rem;opacity:.95;text-transform:uppercase}
@@ -106,16 +114,24 @@
   <section class="section about-section">
     <div class="container">
       <h2 class="section-title">Firm Profile</h2>
-      <div class="about-card glass">
-        <p class="about-lead">
-          At Hantman & Associates, we provide legal services to businesses, foreign governments, and private individuals. While the firm specializes in complex federal and state civil litigation, the firm also handles major white collar criminal defense cases and has a general practice that involves all aspects of matrimonial, contract, and corporate law. The firm also shares a close affiliation with other firms that handle immigration and personal injury.
-        </p>
-        <p class="about-lead" style="margin-top:1.25rem;">
-          This firm has successfully handled law suits against Montel Williams, the New York Yankees (jury verdict of over $1 million dollars), Steven Seagal, Don King Productions, Shelly Finkel, Gary Shaw, Danny De Vito, Anna Nicole Smith, Fabio, and others. We have also won the largest private defamation verdict in the history of the state of New Jersey.
-        </p>
-        <p class="about-lead" style="margin-top:1.25rem;">
-          Our firm is comprised of a multi lingual staff to ensure that you are well represented.
-        </p>
+      <div class="profile-grid">
+        <div class="about-card glass">
+          <p class="about-lead">
+            At Hantman & Associates, we provide legal services to businesses, foreign governments, and private individuals. While the firm specializes in complex federal and state civil litigation, the firm also handles major white collar criminal defense cases and has a general practice that involves all aspects of matrimonial, contract, and corporate law. The firm also shares a close affiliation with other firms that handle immigration and personal injury.
+          </p>
+          <p class="about-lead" style="margin-top:1.25rem;">
+            This firm has successfully handled law suits against Montel Williams, the New York Yankees (jury verdict of over $1 million dollars), Steven Seagal, Don King Productions, Shelly Finkel, Gary Shaw, Danny De Vito, Anna Nicole Smith, Fabio, and others. We have also won the largest private defamation verdict in the history of the state of New Jersey.
+          </p>
+          <p class="about-lead" style="margin-top:1.25rem;">
+            Our firm is comprised of a multi lingual staff to ensure that you are well represented.
+          </p>
+        </div>
+        <aside class="contact-box glass">
+          <h3>Contact Us</h3>
+          <p>Have a matter you'd like to discuss? We're here to help.</p>
+          <p class="contact-phone" style="margin-bottom:.5rem;"><a href="tel:+12122523999" style="color:inherit;text-decoration:none">(212) 252-3999</a></p>
+          <a href="index.html#contact" class="cta-button">Get in Touch</a>
+        </aside>
       </div>
     </div>
   </section>
