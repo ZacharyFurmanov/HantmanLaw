@@ -38,7 +38,7 @@
     /* Press Section */
     .press-section { background: #0a0a0a; }
     .press-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
-    .press-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; transition: all 0.4s ease; position: relative; overflow: hidden; }
+    .press-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; transition: all 0.4s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; }
     .press-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent); transition: left 0.6s ease; }
     .press-card:hover::before { left: 100%; }
     .press-card:hover { transform: translateY(-10px); border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.05); }
@@ -46,7 +46,23 @@
     .press-headline a { color: #ffffff; text-decoration: none; }
     .press-headline a:hover { opacity: 0.85; }
     .press-meta { opacity: 0.8; font-size: 0.95rem; letter-spacing: 0.06em; text-transform: uppercase; }
-    .press-actions { margin-top: 1.25rem; }
+    .press-description { margin-bottom: 1rem; }
+    .press-actions { margin-top: auto; display: flex; align-items: center; }
+
+    /* Press images */
+    .press-card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      display: block;
+      background: #111;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    @media (max-width: 480px) {
+      .press-card img { aspect-ratio: 3 / 2; }
+    }
 
     /* Buttons */
     .cta-button { display: inline-block; background: transparent; color: white; padding: 1.2rem 2rem; text-decoration: none; border: 2px solid white; font-weight: 300; font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.4s ease; position: relative; overflow: hidden; }
@@ -107,7 +123,7 @@
       <nav class="nav-menu">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="attourneys.html">Attorneys</a>
+        <a href="attorneys.html">Attorneys</a>
         <a href="clients.html">Clients</a>
         <a href="services.html">Services</a>
         <a href="press.html">Press</a>
@@ -132,116 +148,319 @@
       <p class="section-subtitle">A small selection of recent and notable mentions.</p>
       <div class="press-grid">
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://pagesix.com/2016/07/12/hannah-davis-gets-in-stripper-cop-beef/" target="_blank" rel="noopener">Hannah Davis gets in stripper cop beef</a></h3>
-  <div class="press-meta">pagesix.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://pagesix.com/2016/07/12/hannah-davis-gets-in-stripper-cop-beef/">Read Article</a></div>
+  <img src="press_images/robertniro.jpeg" alt="Robert De Niro let his hair down to play Sebastian Maniscalco’s hairdresser father in ‘About My Father’" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Robert De Niro let his hair down to play Sebastian Maniscalco’s hairdresser father in ‘About My Father’</h3>
+  <p class="press-description">"De Niro lets his hair down “About My Father” is about funnyman Sebastian Maniscalco’s hairdresser father. Their friend Robert De Niro plays him. De Niro: “I was in ‘The Irishman’ with Sebastian. This is a personal element from his life. A classic Italian family comedy cultural clash with WASPy stiff in-laws. His actual father was my model. I always want a real element in anyone I play. We met in Oklahoma while shooting a movie. “Actors I admired included Gregory Peck and James Dean who only did three movies but was excellent. I never worked with Montgomery Clift. Brando, always great, I knew personally. I worked with terrific Robert Mitchum twice.” In this is Kim Cattrall. Opens May 26. Go. Take your father. Maybe he’ll do your hair."</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2023/05/23/robert-de-niro-lets-his-hair-down-in-about-my-father/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://nypost.com/2016/02/12/danske-bank-sues-wealthy-artist-over-750k-real-estate-deal/" target="_blank" rel="noopener">Danske Bank sues wealthy artist over $750K real estate deal</a></h3>
-  <div class="press-meta">nypost.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2016/02/12/danske-bank-sues-wealthy-artist-over-750k-real-estate-deal/">Read Article</a></div>
+  <img src="press_images/yankee.jpeg" alt="Lawsuit Tries Boss’ Memory" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Lawsuit Tries Boss’ Memory</h3>
+  <p class="press-description">Yankee owner George Steinbrenner came down with a persistent case of memory loss yesterday trying to dodge a $1 million lawsuit over unpaid bills on blueprints for Yankee Stadium luxury boxes. A Pennsylvania firm, GSGSB Inc., filed suit charging the Yankees hired it in 1984 to design luxury boxes and a restaurant for well-heeled fans.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.nydailynews.com/archives/news/1989/04/22/1989-04-22-lawsuit-tries-boss_-memory.html">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://pagesix.com/2015/03/09/gallery-owner-sues-landlord-for-20m-over-noise-pollution/" target="_blank" rel="noopener">Gallery owner sues landlord for $20M over noise, pollution</a></h3>
-  <div class="press-meta">pagesix.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://pagesix.com/2015/03/09/gallery-owner-sues-landlord-for-20m-over-noise-pollution/">Read Article</a></div>
+  <img src="press_images/atlanticcityhousing.jpeg" alt="SRC CONSTRUCTION CORP. OF MONROE, Plaintiff, v. ATLANTIC CITY HOUSING AUTHORITY, Defendant." style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">SRC CONSTRUCTION CORP. OF MONROE, Plaintiff, v. ATLANTIC CITY HOUSING AUTHORITY, Defendant.</h3>
+  <p class="press-description">APPEARANCES: HANTMAN &amp; ASSOCIATES By: Robert J. Hantman, Esq. 358 Fifth Avenue, Suite 1003 New York, New York 10001 Counsel for Plaintiff SRC Construction Corp. of Monroe PARKER McCAY P.A. By: Richard W. Hunt, Esq.; Dana B. Ostrovsky, Esq. 9000 Midlantic Drive, Suite 300 Marlton, New Jersey 08054 Counsel for Defendant Atlantic City Housing Authority</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://casetext.com/case/src-constr-corp-of-monroe-v-atlantic-city-hous-auth">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="http://pagesix.com/2014/10/31/artist-tony-shafrazi-faces-eviction-from-soho-loft/" target="_blank" rel="noopener">Artist Tony Shafrazi faces eviction from Soho loft</a></h3>
-  <div class="press-meta">pagesix.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="http://pagesix.com/2014/10/31/artist-tony-shafrazi-faces-eviction-from-soho-loft/">Read Article</a></div>
+  <img src="press_images/porndirector.jpeg" alt="Porn director files $10M defamation suit against starlet accusing him of assault" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Porn director files $10M defamation suit against starlet accusing him of assault</h3>
+  <p class="press-description">A porn director, Craven Moorehead, has filed a $10 million defamation suit against an adult film star, Aria Lee, who accused him of sexual assault. In June, up-and-coming porn performer Lee alleged in a video posted to Twitter — and subsequently in an interview with porn trade Adult Video News — that she was sexually assaulted by Moorehead twice last year.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2022/08/09/porn-director-files-10m-defamation-suit-against-starlet-accusing-him-of-assault/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="http://www.nydailynews.com/new-york/artist-tony-shafrazi-eviction-soho-loft-article-1.1992879" target="_blank" rel="noopener">Artist Tony Shafrazi faces eviction from Soho loft</a></h3>
-  <div class="press-meta">www.nydailynews.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="http://www.nydailynews.com/new-york/artist-tony-shafrazi-eviction-soho-loft-article-1.1992879">Read Article</a></div>
+  <img src="press_images/arialee.jpeg" alt="Craven Moorehead Seeks to ‘Clear His Name,’ Files Defamation Lawsuit Against Aria Lee" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Craven Moorehead Seeks to ‘Clear His Name,’ Files Defamation Lawsuit Against Aria Lee</h3>
+  <p class="press-description">Director and producer Craven Moorehead has filed a $10 million civil lawsuit for defamation against model Aria Lee over sexual assault allegations made against him by Lee back in June. The lawsuit, filed a few days ago, was first reported yesterday by the New York Post’s Page Six and XBIZ has since been able to view the full complaint.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.xbiz.com/news/268222/craven-moorehead-seeks-to-clear-his-name-files-defamation-lawsuit-against-aria-lee">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="http://www.nydailynews.com/new-york/tony-shafrazi-pays-4-million-settle-eviction-article-1.2411506" target="_blank" rel="noopener">Tony Shafrazi pays $4 million to settle eviction</a></h3>
-  <div class="press-meta">www.nydailynews.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="http://www.nydailynews.com/new-york/tony-shafrazi-pays-4-million-settle-eviction-article-1.2411506">Read Article</a></div>
+  <img src="press_images/moorehead.jpeg" alt="Moorehead v. Aria Lee Complaint" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Moorehead v. Aria Lee Complaint</h3>
+  <p class="press-description">Moorehead v. Aria Lee Complaint PDF - Details in document.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.courtlistener.com/docket/64811258/moorehead-v-lee/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://gothamist.com/news/shafrazi-gallerys-tony-shafrazi-could-lose-soho-loft-due-to-fraud" target="_blank" rel="noopener">Shafrazi Gallery’s Tony Shafrazi Could Lose SoHo Loft Due To 'Fraud'</a></h3>
-  <div class="press-meta">gothamist.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://gothamist.com/news/shafrazi-gallerys-tony-shafrazi-could-lose-soho-loft-due-to-fraud">Read Article</a></div>
+  <img src="press_images/diddy.jpeg" alt="Al B. Sure! sends cease-and-desist to Amazon, author of ‘fake’ Kim Porter book that claims he had sex with Diddy" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Al B. Sure! sends cease-and-desist to Amazon, author of ‘fake’ Kim Porter book that claims he had sex with Diddy</h3>
+  <p class="press-description">Amazon and the mysterious publisher of a sketchy book claiming to be the late Kim Porter’s memoir have been sent a cease-and-desist letter from Porter’s ex, singer Al B Sure! The left-field best-seller claims the “Nite and Day” singer — born Albert Joseph Brown III — engaged in sexual relations with Porter and another of her exes, Sean “Diddy” Combs. Sure! is now trying to block the tome’s sale.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2022/08/19/al-b-sure-sends-cease-and-desist-to-amazon-author-of-fake-kim-porter-book/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="http://hyperallergic.com/157868/tony-shafrazi-could-lose-his-soho-loft/" target="_blank" rel="noopener">Tony Shafrazi Could Lose His SoHo Loft</a></h3>
-  <div class="press-meta">hyperallergic.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="http://hyperallergic.com/157868/tony-shafrazi-could-lose-his-soho-loft/">Read Article</a></div>
+  <img src="press_images/adams.jpeg" alt="It’s the end of the line for Eric Adams’ ‘unconstitutional’ NYC migrant bus suit, judge rules" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">It’s the end of the line for Eric Adams’ ‘unconstitutional’ NYC migrant bus suit, judge rules</h3>
+  <p class="press-description">It’s the end of the line for Mayor Eric Adams’ $700 million lawsuit against bus companies that have hauled more than 33,000 migrants to the Big Apple, according to a Manhattan judge who denied the city’s request for a preliminary injunction and called the case “dubious at best.” The suit, filed in January against 17 bus companies that ferried folks from Texas to New York City, was deemed “unconstitutional” by Manhattan Supreme Court Judge Mary Rosado.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2024/03/16/news/judge-rules-against-eric-adams-unconstitutional-migrant-bus-lawsuit/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://www.artnews.com/art-news/market/tony-shafrazi-to-be-evicted-from-soho-loft-1237/" target="_blank" rel="noopener">TONY SHAFRAZI TO BE EVICTED FROM SOHO LOFT</a></h3>
-  <div class="press-meta">www.artnews.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.artnews.com/art-news/market/tony-shafrazi-to-be-evicted-from-soho-loft-1237/">Read Article</a></div>
+  <img src="press_images/onetaste.jpeg" alt="Former worker for One Taste ‘orgasm cult’ claims lawyer wanted her to ‘assume’ victim role in new lawsuit" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Former worker for One Taste ‘orgasm cult’ claims lawyer wanted her to ‘assume’ victim role in new lawsuit</h3>
+  <p class="press-description">A former facilitator for embattled “orgasm cult” One Taste claims her attorney tried to “manipulate” her “to assume the role of a crime victim” amid a federal probe of the company, she said in a lawsuit. Alisha Price believes lawyer Neil Glazer ignored her belief that nothing criminal had gone on at the Californa-based sexual wellness company, which claims to teach “orgasmic meditation” in which women have their genitals stroked for 15 minutes.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2022/09/14/former-worker-for-one-taste-orgasm-cult-claims-lawyer-wanted-her-to-assume-victim-role-in-new-lawsuit/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="http://www.adhikara.com/newspage.php?id=1290" target="_blank" rel="noopener">Marc Roberts, CEO of American Condotel, Inc. Responds to Urgent Orders of the SEC</a></h3>
-  <div class="press-meta">www.adhikara.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="http://www.adhikara.com/newspage.php?id=1290">Read Article</a></div>
+  <img src="press_images/famedfriars.jpeg" alt="Famed Friars Club at center of yet another legal battle with former exec director" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Famed Friars Club at center of yet another legal battle with former exec director</h3>
+  <p class="press-description">The endless legal troubles of the Friars Club are raging on — with former boss Michael Gyure filing a new suit against board members over what he claims was “a frivolous and vindictive” suit filed against him last year. The papers are about as entertaining as a Borscht Belt routine.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2023/07/22/famed-friars-club-at-center-of-yet-another-legal-battle-with-former-exec-director/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://www.newsweek.com/miporm-148118" target="_blank" rel="noopener">MiPorm</a></h3>
-  <div class="press-meta">www.newsweek.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.newsweek.com/miporm-148118">Read Article</a></div>
+  <img src="press_images/majordetail.jpeg" alt="Major detail in Rockets’ Kevin Porter Jr. assault case is wrong: source" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Major detail in Rockets’ Kevin Porter Jr. assault case is wrong: source</h3>
+  <p class="press-description">FIRST ON FOX: Houston Rockets guard Kevin Porter Jr. is accused of attacking girlfriend Kysre Gondrezick in a New York City hotel room earlier this week, but her attorney told Fox News Digital the allegations aren't accurate. "Statements that were attributed to her were not her words," said Gondrezick's lawyer, Robert Hantman, referring to a criminal complaint. "She says he didn’t strike her repeatedly. He’s a big guy. If he hit her repeatedly, she’d have a broken jaw."</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.foxnews.com/sports/major-detail-rockets-kevin-porter-jr-assault-case-wrong-source">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://hudsonreporter.com/2002/11/22/paulines-placed-on-state-division-of-consumer-affairs-list-of-non-compliant-model-and-talent-agencies/" target="_blank" rel="noopener">Pauline’s placed on State Division of Consumer Affairs list of non-compliant model and talent agencies</a></h3>
-  <div class="press-meta">hudsonreporter.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://hudsonreporter.com/2002/11/22/paulines-placed-on-state-division-of-consumer-affairs-list-of-non-compliant-model-and-talent-agencies/">Read Article</a></div>
+  <img src="press_images/giuliani.jpeg" alt="The Indispensable Man: How Giuliani Led Trump to the Brink of Impeachment" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">The Indispensable Man: How Giuliani Led Trump to the Brink of Impeachment</h3>
+  <p class="press-description">Not so long ago, it seemed to Rudolph W. Giuliani that he would be presiding over a hefty part of the world. Holding court a few nights after the 2016 election in a private cigar bar on Fifth Avenue, glass of Macallan at hand, Mr. Giuliani boasted to friends that President-elect Donald J. Trump would soon nominate him to the most prestigious of cabinet posts.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.nytimes.com/2019/10/16/us/politics/giuliani-trump-impeachment.html">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://hudsonreporter.com/2003/01/31/atpsje-shft-so-on/" target="_blank" rel="noopener">ATPSJE SHFT SO ON</a></h3>
-  <div class="press-meta">hudsonreporter.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://hudsonreporter.com/2003/01/31/atpsje-shft-so-on/">Read Article</a></div>
+  <img src="press_images/ukrainesmear.jpeg" alt="Rudy Giuliani’s Ukraine smear case started with splashy Hollywood deal gone bad — and a cameo from Jack Nicholson" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Rudy Giuliani’s Ukraine smear case started with splashy Hollywood deal gone bad — and a cameo from Jack Nicholson</h3>
+  <p class="press-description">A Hollywood deal that went sideways gave federal investigators clues to unravel the explosive scheme to dig up dirt on Joe Biden in Ukraine — a plot that could land America’s Mayor behind bars. Lev Parnas, one of Rudy Giuliani’s shady Soviet emigre partners in an alleged scheme to boost President Trump’s reelection, also once scammed a friend out of $350,000 that he claimed was a loan to help fund a proposed flick called “Memory of a Killer,” a Long Island federal judge ruled.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2021/12/20/rudy-giulianis-ukraine-smear-case-started-with-hollywood-deal-gone-bad/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://www.cbsnews.com/news/coronavirus-fyre-festival-founder-billy-mcfarland-asks-for-early-prison-release/" target="_blank" rel="noopener">Fyre Festival founder Billy McFarland asks for early prison release, citing coronavirus concerns</a></h3>
-  <div class="press-meta">www.cbsnews.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.cbsnews.com/news/coronavirus-fyre-festival-founder-billy-mcfarland-asks-for-early-prison-release/">Read Article</a></div>
+  <img src="press_images/russianoligarchs.jpeg" alt="Russian Oligarchs Caught in Love Triangle Are Fighting Over Miami Villa" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Russian Oligarchs Caught in Love Triangle Are Fighting Over Miami Villa</h3>
+  <p class="press-description">Two Russian oligarchs — in a love triangle with the same woman — are fighting over a townhouse in Miami. New York lawyer Robert Hantman is trying to stop the property from being transferred to Yulia Drynkina, the ex-girlfriend of his client, Sergei Polonsky, and mother of three of his children, who is reported to be in a relationship with his former business partner Roman Trotsenko.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.thedailybeast.com/russian-oligarchs-caught-in-love-triangle-are-fighting-over-miami-villa">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://www.sun-sentinel.com/2007/05/06/nachos-key-to-resolve-racist-issue/" target="_blank" rel="noopener">Nachos Key To Resolve Racist Issue</a></h3>
-  <div class="press-meta">www.sun-sentinel.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.sun-sentinel.com/2007/05/06/nachos-key-to-resolve-racist-issue/">Read Article</a></div>
+  <img src="press_images/newyorkmuseums.jpeg" alt="New York museums call for $100m lawsuit to be dismissed" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">New York museums call for $100m lawsuit to be dismissed</h3>
+  <p class="press-description">Earlier this year, artist Robert Cenedella filed a federal class action lawsuit against five major American institutions alleging manipulation of the art market. Now, five New York Museums, which Cenedella has accused of being part of a ‘corporate museum cartel’ that only promotes artists within their own collections, are seeking a court dismissal of the case.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.theartnewspaper.com/2018/06/05/new-york-museums-call-for-usd100m-lawsuit-to-be-dismissed">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://www.washingtonpost.com/news/digger/wp/2016/02/17/marc-shafiroff-ceo-of-mt-aguila-enterprises-pleads-guilty-to-fraud-charges-involving-750k/" target="_blank" rel="noopener">Marc Shafiroff, CEO of MT Aguila Enterprises, pleads guilty to fraud charges involving $750K</a></h3>
-  <div class="press-meta">www.washingtonpost.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.washingtonpost.com/news/digger/wp/2016/02/17/marc-shafiroff-ceo-of-mt-aguila-enterprises-pleads-guilty-to-fraud-charges-involving-750k/">Read Article</a></div>
+  <img src="press_images/victoriasecret.jpeg" alt="Victoria’s Secret model Sui He returns to New York Model Management, avoids lawsuit" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Victoria’s Secret model Sui He returns to New York Model Management, avoids lawsuit</h3>
+  <p class="press-description">It’s no longer a case of He said, she said. A $1 million lawsuit against Victoria’s Secret model Sui He has been dropped. The pioneering Chinese model, who tried making the jump from New York Model Management to Women Management shortly before fall Fashion Week, has returned to her original agency. That agency in turn has agreed to drop their lawsuit against the 27-year-old Wenzhou native.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2018/02/10/victorias-secret-model-sui-he-returns-to-new-york-model-management-avoids-lawsuit/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://pagesix.com/2014/10/10/court-rules-loft-mate-must-pay-1-6m-judgment-to-tony-shafrazi/" target="_blank" rel="noopener">Court rules loft mate must pay $1.6M judgment to Tony Shafrazi</a></h3>
-  <div class="press-meta">pagesix.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://pagesix.com/2014/10/10/court-rules-loft-mate-must-pay-1-6m-judgment-to-tony-shafrazi/">Read Article</a></div>
+  <img src="press_images/openrunwayshow.jpeg" alt="Victoria’s Secret model Sui He is sued as she prepares to open runway show for Ralph Lauren in Fashion Week" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Victoria’s Secret model Sui He is sued as she prepares to open runway show for Ralph Lauren in Fashion Week</h3>
+  <p class="press-description">Sui He is being sued. The stunning Victoria's Secret runway beauty, who is also known for her 2011 turn as the first East Asian model to open a runway show for Ralph Lauren, has been accused of dumping her agency to join a rival.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/09/07/victorias-secret-model-sui-he-is-sued-as-she-prepares-to-open-runway-show-for-ralph-lauren-in-fashion-week/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://www.law.com/dailybusinessreview/2019/01/10/major-trump-donor-in-florida-hit-with-judgment-over-bad-movie-deal/" target="_blank" rel="noopener">Major Trump Donor in Florida Hit With Judgment Over Bad Movie Deal</a></h3>
-  <div class="press-meta">www.law.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.law.com/dailybusinessreview/2019/01/10/major-trump-donor-in-florida-hit-with-judgment-over-bad-movie-deal/">Read Article</a></div>
+  <img src="press_images/modelboyfriendfight.jpeg" alt="Cops find gun while responding to model, boyfriend fight" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Cops find gun while responding to model, boyfriend fight</h3>
+  <p class="press-description">A model who has advocated for the rights of underage catwalkers was busted this month with her beau for gun possession inside their West Village pad, The Post has learned. Cops were called to the apartment on Bleecker Street after Alise Shoemaker, 30, allegedly attacked her software-developer boyfriend, Christopher Lattner, 32, “jump[ing] on his back and scratch[ing] his neck, causing abrasions, bleeding lacerations, redness, and substantial pain,” according to a criminal complaint.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/06/15/cops-find-gun-while-responding-to-model-boyfriend-fight/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://www.foxnews.com/story/ga-bass-ethics-commission-files-charges-against-easley-campaign" target="_blank" rel="noopener">GA: Bass: Ethics Commission files charges against Easley campaign</a></h3>
-  <div class="press-meta">www.foxnews.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.foxnews.com/story/ga-bass-ethics-commission-files-charges-against-easley-campaign">Read Article</a></div>
+  <img src="press_images/bloomberg.jpeg" alt="Bogus Bloomberg is a big name in $1M lawsuit over club fight" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Bogus Bloomberg is a big name in $1M lawsuit over club fight</h3>
+  <p class="press-description">He mayor may not be a Bloomberg, but he’s going to court. Real estate broker Dan S. Neiditch, who allegedly chooses the more famous surname of Bloomberg when making reservations at top nightclubs, is being sued by a club employee for $1 million.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/06/02/bogus-bloomberg-is-a-big-name-in-1m-lawsuit-over-club-fight/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="http://www.nypost.com/p/news/business/biz_mavens_latest_toot_s_0ivCRtIhkL7SG86xc54QmN" target="_blank" rel="noopener">Biz Maven’s Latest Toots</a></h3>
-  <div class="press-meta">www.nypost.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="http://www.nypost.com/p/news/business/biz_mavens_latest_toot_s_0ivCRtIhkL7SG86xc54QmN">Read Article</a></div>
+  <img src="press_images/petermax.jpeg" alt="Peter Max slapped with lawsuit over sale of Corvette collection" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Peter Max slapped with lawsuit over sale of Corvette collection</h3>
+  <p class="press-description">Famed Pop artist Peter Max is a scammer who cheated two New York men out of commissions on the sale of his storied Corvette collection and also swindled a New Jersey woman with artwork that was “ghost painted” for him, a new lawsuit charges. Jeff Wallner and Kenneth Simmons are suing the ‘60s psychedelic art icon and his agent Larry Moskowitz for $1 million, claiming Max asked them to sell off his trove of 36 Corvettes — one for each year between 1953 and 1989 — in exchange for a 10 percent commission they never got.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/05/26/peter-max-slapped-with-lawsuit-over-sale-of-corvette-collection/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="https://www.eonline.com/news/367386/school-of-diddy?utm_source=eonline&utm_medium=rssfeeds&utm_campaign=imdb_tv-movies-to" target="_blank" rel="noopener">School of Diddy</a></h3>
-  <div class="press-meta">www.eonline.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.eonline.com/news/367386/school-of-diddy?utm_source=eonline&utm_medium=rssfeeds&utm_campaign=imdb_tv-movies-to">Read Article</a></div>
+  <img src="press_images/poachedmodels.jpeg" alt="Agencies at war over ‘poached’ models" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Agencies at war over ‘poached’ models</h3>
+  <p class="press-description">Modeling agency New York Model Management has declared a fashion war on rival Muse Model Management. New York Models alleges in a lawsuit in Supreme Court that veteran booking agent Jackie Sanchez breached her contract when she jumped ship to Muse, then approached “at least three models” to make the move, too.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/02/26/agencies-at-war-over-poached-models/">READ MORE</a></div>
 </article>
+
 <article class="press-card fade-in">
-  <h3 class="press-headline"><a href="http://www.huffingtonpost.com/2011/07/18/kristin-cavallari-jay-cutler-engaged_n_901478.html" target="_blank" rel="noopener">Kristin Cavallari, Jay Cutler engaged</a></h3>
-  <div class="press-meta">www.huffingtonpost.com</div>
-  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="http://www.huffingtonpost.com/2011/07/18/kristin-cavallari-jay-cutler-engaged_n_901478.html">Read Article</a></div>
+  <img src="press_images/kevinporter.jpeg" alt="Kysre Gondrezick’s lawyer warns of ‘misleading’ info in Kevin Porter hotel assault case" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Kysre Gondrezick’s lawyer warns of ‘misleading’ info in Kevin Porter hotel assault case</h3>
+  <p class="press-description">"Kysre Gondrezick is breaking her silence in the alleged Kevin Porter Jr. assault case — asking people to “avoid speculation” about what really happened in a New York hotel room on Monday morning before the Houston Rockets guard was arrested. The 23-year-old Porter was charged with assault and strangulation on Monday by New York police for allegedly assaulting his girlfriend, Gondrezick, at the Millennium Hilton New York Hotel. But a source close to Gondrezick exclusively tells The Post that she has not made a statement to the cops about the incident, and her lawyer further says that what has been reported from her side is “misleading and inaccurate” — without elaborating on specifics."</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2023/09/13/kysre-gondrezicks-lawyer-warns-of-misleading-info-in-kevin-porter-hotel-assault-case/">READ MORE</a></div>
 </article>
-<!-- The list continues with all remaining links parsed from the uploaded HTML (total ~50 cards). -->
+
+<article class="press-card fade-in">
+  <img src="press_images/heidi.jpeg" alt="Former Hollywood madam Heidi Fleiss on celibacy, meth and Steve Bing" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Former Hollywood madam Heidi Fleiss on celibacy, meth and Steve Bing</h3>
+  <p class="press-description">So far, Heidi Fleiss’s 2020 hasn’t exactly been a flying success. The former Hollywood madam — during the 1990s she furnished call girls to Charlie Sheen and other A-listers — began the year worried about the ­future of her macaw sanctuary.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2020/02/22/former-hollywood-madam-heidi-fleiss-on-celibacy-meth-and-steve-bing/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/crossfit.jpeg" alt="CrossFit co-founder Lauren Jenai’s fiancé freed on $2M bond" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">CrossFit co-founder Lauren Jenai’s fiancé freed on $2M bond</h3>
+  <p class="press-description">CrossFit co-founder Lauren Jenai has just gotten a wedding present she never imagined — her jailed fiance Franklin Tyrone Tucker is being freed on $2 million bond just before the couple was to be married in jail. The 11th-hour bond deal has even brought Jenai closer with her ex-husband, she said — as he offered to chip in and help with a loan.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2019/12/10/crossfit-co-founder-lauren-jenais-fiance-freed-on-2m-bond/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/crossfitcofounder.jpeg" alt="CrossFit Co-Founder Rebounds with Jailed Pal After Messy Split From Ex" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">CrossFit Co-Founder Rebounds with Jailed Pal After Messy Split From Ex</h3>
+  <p class="press-description">Co-founder of CrossFit Lauren Jenai has recovered from a messy split from her ex-husband and former business partner Greg Glassman, and found love again, Page Six can reveal — with Franklin Tyrone Tucker, a close high school friend who’s currently in a Florida jail charged with a murder he says he did not commit. Jenai, who began a relationship with Tucker while he’s been jailed over the past year-plus, told us they’re engaged to marry while she tries to get him out on bail and prove his innocence.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://pagesix.com/2019/04/17/crossfit-co-founder-rebounds-with-jailed-pal-after-messy-split-from-ex/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/martialarts.jpeg" alt="How Unreleased Martial Arts Film and $10M Lawsuit Have 2 Prominent Staten Islanders Set for Courtroom Showdown" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">How Unreleased Martial Arts Film and $10M Lawsuit Have 2 Prominent Staten Islanders Set for Courtroom Showdown</h3>
+  <p class="press-description">Well-known Hollywood producer Julius (Jules) Nasso has delivered the legal equivalent of a $10-million karate chop to Grandmaster Jhong Uhk Kim, his producing partner in a recently completed martial arts movie. Nasso seeks that amount in damages from Kim, alleging the martial arts maven has abrogated his financial and promotional responsibilities, dooming the movie, entitled "DARC," to a "short shelf-life and near-certain financial failure."</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.silive.com/news/2017/06/how_unreleased_martial_arts_fi.html">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/businessandgirlfriendrift.jpeg" alt="After business and girlfriend rifts, Russian oligarchs battle over $1.5M Miami Beach pad" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">After business and girlfriend rifts, Russian oligarchs battle over $1.5M Miami Beach pad</h3>
+  <p class="press-description">What do you get when you pit a pair of Russian oligarchs — one Vladimir Putin’s friend, the second jailed in Moscow —against each other? Then, add a girlfriend who’s accused of betraying one billionaire for the other? You get this: A lawsuit over the ownership of a $1.5 million townhouse at Aqua in Miami Beach wrapped in international intrigue.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.miamiherald.com/news/business/real-estate-news/article208383234.html">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/costofmodel.jpeg" alt="The outrageous cost of being a model" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">The outrageous cost of being a model</h3>
+  <p class="press-description">Modeling is a time-consuming, demanding and cutthroat profession. But most of all, it can be prohibitively expensive. Unlike most U.S. workers, models regularly see huge chunks of their earnings -- whether it's a third, more than half, or even entire paychecks -- disappear right before their eyes.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://money.cnn.com/2016/02/18/news/economy/model-expenses/index.html">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/gondrezicks.jpeg" alt="Rockets guard Kevin Porter Jr.’s ex-girlfriend denies he strangled, beat her in NYC hotel" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Rockets guard Kevin Porter Jr.’s ex-girlfriend denies he strangled, beat her in NYC hotel</h3>
+  <p class="press-description">Houston Rockets guard Kevin Porter Jr.’s ex-girlfriend has vehemently denied allegations the NBA player relentlessly beat and choked her during a fight in their Big Apple hotel room — telling The Post on Tuesday: “It’s not true.”</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2023/09/13/rockets-guard-kevin-porter-jr-s-ex-girlfriend-denies-he-strangled-beat-her-in-nyc-hotel/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/billymcfarland.jpeg" alt="Fyre Festival founder Billy McFarland asks for early prison release, citing coronavirus concerns" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Fyre Festival founder Billy McFarland asks for early prison release, citing coronavirus concerns</h3>
+  <p class="press-description">Billy McFarland, the creator of the failed 2017 Fyre Festival, on Tuesday requested to be released early from prison and serve the remainder of his six year sentence under "home confinement." McFarland cited the coronavirus spread in the Ohio prison where he is currently being held as the reason he should be released, according to court documents obtained Thursday by CBS News. McFarland's request for compassionate release was made in a letter sent from his attorneys to Judge Naomi Reice Buchwald of the U.S. District Court for the Southern District of New York. The lawyers argue in the letter that McFarland's "preexisting conditions" make him "particularly vulnerable to catching and suffering from severe or fatal consequences of the virus."</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.cbsnews.com/news/fyre-festival-founder-billy-mcfarland-asks-for-early-prison-release-citing-coronavirus-concerns/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/laurenjenai.jpeg" alt="Why CrossFit Millionairess Lauren Jenai Fell in Love with Florida Man" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Why CrossFit Millionairess Lauren Jenai Fell in Love with Florida Man</h3>
+  <p class="press-description">Jenai is the co-founder of CrossFit, and a divorcée worth $20 million. She's in love again, and she doesn't care her fiancé is an accused murderer looking at life in prison. When the Duchess of Windsor, née Wallis Simpson, reportedly said “a woman can never be too rich or too thin,” she couldn’t possibly have imagined Lauren Jenai. The fitness entrepreneur is not only lithe as a cheetah, but she also pocketed $20 million from CrossFit, the gym-training empire she co-founded with her ex-husband, Greg Glassman.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.thedailybeast.com/why-crossfit-millionairess-lauren-jenai-fell-in-love-with-florida-man">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/trumpdonor.jpeg" alt="Major Trump Donor in Florida Hit With Judgment Over Bad Movie Deal" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Major Trump Donor in Florida Hit With Judgment Over Bad Movie Deal</h3>
+  <p class="press-description">A $510,000 judgment from the Eastern District of New York has followed Republican party donor Lev Parnas to his home turf in the Southern District of Florida, as he's yet to pay back money he borrowed for a movie that was never made. Aventura commercial litigator Tony Andre of the Andre Law Firm filed to register a foreign judgment in the Southern District of Florida against Lev Parnas, a Boca Raton resident and major Republican Party donor.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.law.com/dailybusinessreview/2020/02/13/major-trump-donor-in-florida-hit-with-judgment-over-bad-movie-deal/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/museums.jpeg" alt="This Artist Is Suing New York’s Largest Museums for Excluding Him. Now, His Day in Court Has Arrived." style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">This Artist Is Suing New York’s Largest Museums for Excluding Him. Now, His Day in Court Has Arrived.</h3>
+  <p class="press-description">At a hearing for the outlandish case, a lawyer likened museums' choices to those made by NBA teams during a draft. While many artists believe they deserve more recognition than they’ve received, most just complain about it to their friends. Artist Robert Cenedella has gone a different route: He’s taken the museums that he believes have wronged him to court.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://news.artnet.com/art-world/robert-cenedella-museum-lawsuit-2019-1520897">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/handsurgeon.jpeg" alt="Ex-hand surgeon acquitted of beating his wife in 2011 now accused of choking a flight attendant and threatening to ‘strip naked’ on plane" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Ex-hand surgeon acquitted of beating his wife in 2011 now accused of choking a flight attendant and threatening to ‘strip naked’ on plane</h3>
+  <p class="press-description">A former hand surgeon who is no stranger to legal battles, is in trouble again after he allegedly grabbed a flight attendant by the neck during a recent transatlantic flight. Michael Glyn Brown, of Houston, Texas, is accused of making 'rude sexual comments' to the flight attendant as he grabbed her during a January 2 flight from London to Miami.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.dailymail.co.uk/news/article-3396542/Ex-hand-surgeon-acquitted-beating-wife-2011-accused-choking-flight-attendant-threatening-strip-naked-plane.html">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/boxerinjuries.jpeg" alt="Judge dismisses claims against promoter for boxer’s injuries" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Judge dismisses claims against promoter for boxer’s injuries</h3>
+  <p class="press-description">A New York judge has dismissed negligence claims against a boxing promoter who didn't ask for a heavyweight fighter to be taken by ambulance to a hospital after a 2013 bout in Madison Square Garden that left him severely disabled. Magomed Abdusalamov, 35, known as the Russian Tyson, lost a 10-round bout with Ismaikel "Mike" Perez on Nov. 2, 2013. After the fight, he underwent surgery for a blood clot in his brain. He is now paralyzed on the right side and has trouble communicating.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.espn.com/boxing/story/_/id/12516438/judge-dismisses-claims-promoter-boxer-injuries">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/doublecrossed.jpeg" alt="Victoria’s Secret model double-crossed us, agency says" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Victoria’s Secret model double-crossed us, agency says</h3>
+  <p class="press-description">A major Big Apple modeling agency is ​setting up for a Fashion Week showdown with a competitor over an up-and-coming Chinese catwalker. New York Model Management is suing Women Management, model Sui He and her booker, Duncan Ord, for $1 million.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/09/07/victorias-secret-model-double-crossed-us-agency-says/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/lindseylohan.jpeg" alt="Male model, a Lindsay Lohan ex, gets sweet deal in assault case" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Male model, a Lindsay Lohan ex, gets sweet deal in assault case</h3>
+  <p class="press-description">A former Ralph Lauren model and ex-Lindsay Lohan beau who belted a man in a dispute over a painting got a sweet deal from Manhattan prosecutors Thursday. Dreadlocked model Morgan O’Connor, 20, was charged with assault after attacking acquaintance Thomas Goodwin for removing a $100,000 painting from his carriage house on West 14th Street in July.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/06/22/male-model-a-lindsay-lohan-ex-gets-sweet-deal-in-assault-case/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/arraignedoverfight.jpeg" alt="Model is arraigned in NYC over fight with his friend’s dad" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Model is arraigned in NYC over fight with his friend’s dad</h3>
+  <p class="press-description">A male model who was romantically linked to Lindsay Lohan and Miley Cyrus was arraigned Monday for allegedly slugging a pal's father over a piece of pricey artwork. Morgan O'Connor, 20, the former face of Polo Ralph Lauren, was released without bail after his arraignment for allegedly assaulting Timothy Goodwin over a piece of street art July 2.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/07/10/model-is-arraigned-in-nyc-over-fight-with-his-friends-dad/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/allegedsabotageplot.jpeg" alt="Model sues agency over alleged sabotage plot" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Model sues agency over alleged sabotage plot</h3>
+  <p class="press-description">A Brazilian model is suing her Manhattan-based agency, claiming her bosses are sabotaging her relationship with her biggest client: fashion designer Carolina Herrera. Renata Faria Zandonadi signed on with Muse Management in 2012 to build her customer base. Before then, she worked almost exclusively with Herrera in Paris.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/06/27/model-sues-agency-over-alleged-sabotage-plot/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/johnson.jpeg" alt="Magic Johnson ‘stuck a knife in my back’: lawsuit" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Magic Johnson ‘stuck a knife in my back’: lawsuit</h3>
+  <p class="press-description">After Dodgers co-owner Magic Johnson got in hot water with Major League Baseball for his comments about Yankee slugger Robinson Cano, he’s now had a setback in a federal court. A Florida judge is allowing a case against the former NBA star to proceed, alleging he broke an agreement to market and sell a prepaid credit card — called the Magic Cash Card — and then made a similar deal with competitor OneWest Bank to hawk a similarly-named prepaid plastic.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/03/28/magic-johnson-stuck-a-knife-in-my-back-lawsuit/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/noisepollution.jpeg" alt="Gallery owner sues landlord for $20M over noise, pollution" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Gallery owner sues landlord for $20M over noise, pollution</h3>
+  <p class="press-description">A Manhattan art gallery owner who helped launch the careers of Keith Haring and Jean-Michel Basquiat is suing his former landlord for allegedly tricking him into signing a 15-year lease without telling him the MTA was about to start drilling for the No. 7 train extension. In his $20 million suit, Tony Shafrazi, whose clients include Donald Trump and Larry Silverstein, claims he inked a deal with the owner of 540-544 W. 26th St. in 2003 for $16,666.67 a month, The Post’s Julia Marsh reports.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2015/07/21/gallery-owner-sues-landlord-for-20m-over-noise-pollution/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/tonyshafrazi.jpeg" alt="Artist Tony Shafrazi faces eviction from Soho loft" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Artist Tony Shafrazi faces eviction from Soho loft</h3>
+  <p class="press-description">Tony Shafrazi — the art dealer who discovered Jean-Michel Basquiat and nurtured the careers of Keith Haring and Kenny Scharf — is facing eviction from the Soho loft where he has lived for more than 20 years. But Shafrazi, 71, is fighting back. The dealer’s lawyer Robert Hantman filed suit for $8 million Friday in Manhattan Supreme Court accusing the landlord of fraud and breach of contract.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/01/13/artist-tony-shafrazi-faces-eviction-from-soho-loft/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/unpaidfees.jpeg" alt="Agent suing Clemente family over ‘unpaid fees’" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Agent suing Clemente family over ‘unpaid fees’</h3>
+  <p class="press-description">A branding agent who’s worked with Derek Jeter and Miss America is suing the family of the late baseball great Roberto Clemente over almost $1 million in unpaid fees. Manhattan-based Wicked Cow Entertainment was hired in 2011 by Roberto’s son Luis to cash in on the Hall of Famer’s “name, likeness and image” according to the Manhattan Supreme Court suit.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/09/08/agent-suing-clemente-family-over-unpaid-fees/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/rickross.jpeg" alt="Rapper Rick Ross on the Run From Lawsuit" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Rapper Rick Ross on the Run From Lawsuit</h3>
+  <p class="press-description">During a promoter's attempt to find Rick Ross, a registered address for the rapper turned out to be a UPS store, lawyers claim. You would think it would be easy to find a 300-pound rapper covered head-to-toe in tattoos — but a concert promoter is complaining to a federal judge that Rick Ross elaborately ducked court papers for six months in a blockbuster lawsuit against him.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://www.billboard.com/music/rb-hip-hop/rick-ross-lawsuit-6820775/">READ MORE</a></div>
+</article>
+
+<article class="press-card fade-in">
+  <img src="press_images/stuckaknifeinmyback.jpeg" alt="Magic Johnson ‘stuck a knife in my back’: lawsuit" style="width:100%; height:auto; margin-bottom:1rem; border-radius:4px;">
+  <h3 class="press-headline">Magic Johnson ‘stuck a knife in my back’: lawsuit</h3>
+  <p class="press-description">After Dodgers co-owner Magic Johnson got in hot water with Major League Baseball for his comments about Yankee slugger Robinson Cano, he’s now had a setback in a federal court. A Florida judge is allowing a case against the former NBA star to proceed, alleging he broke an agreement to market and sell a prepaid credit card — called the Magic Cash Card — and then made a similar deal with competitor OneWest Bank to hawk a similarly-named prepaid plastic.</p>
+  <div class="press-actions"><a class="cta-button" target="_blank" rel="noopener" href="https://nypost.com/2017/03/28/magic-johnson-stuck-a-knife-in-my-back-lawsuit/">READ MORE</a></div>
+</article>
       </div>
     </div>
   </section>
@@ -286,6 +505,34 @@
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Ensure all press images lazy-load and decode asynchronously
+    document.querySelectorAll('.press-card img').forEach((img) => {
+      if (!img.getAttribute('loading')) img.setAttribute('loading', 'lazy');
+      if (!img.getAttribute('decoding')) img.setAttribute('decoding', 'async');
+      img.setAttribute('fetchpriority', 'low');
+    });
+
+    // Reveal cards with fade-in when scrolled into view
+    const cards = document.querySelectorAll('.press-card.fade-in');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+      cards.forEach((el) => io.observe(el));
+    } else {
+      // Fallback for very old browsers
+      cards.forEach((el) => el.classList.add('visible'));
+    }
+  </script>
 </body>
 </html>

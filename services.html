@@ -63,6 +63,63 @@
             .container { padding: 0 1rem; }
         }
     </style>
+  <style>
+    html{scroll-behavior:smooth}
+    /* Sticky tab selector */
+    .services-tabs{z-index:1000;background:transparent;border-bottom:1px solid #eee;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+    .services-tabs .tabs-inner{
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      align-items: center;
+      padding: .75rem 1rem;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    .services-tabs .tab {
+      flex: 0 0 auto;
+      text-decoration: none;
+      padding: .6rem 1.2rem;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.55);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: #fff;
+      white-space: nowrap;
+      background: transparent;
+      font-size: 1rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+      width: auto;
+      text-align: center;
+    }
+    .services-tabs .tab:hover {
+      transform: translateY(-2px);
+      background-color: rgba(255,255,255,0.08);
+      border-color: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+    }
+    .services-tabs .tab:active,
+    .services-tabs .tab:focus,
+    .services-tabs .tab[aria-pressed="true"],
+    .services-tabs .tab.is-active,
+    .services-tabs .tab.is-selected {
+      background: transparent !important;
+      box-shadow: none !important;
+      border-color: rgba(255,255,255,0.55) !important;
+      color: #fff !important;
+    }
+    @media (max-width:768px){
+      .services-tabs .tab{
+        font-size: .9rem;
+        padding: .6rem 1rem;
+      }
+    }
+
+    /* Bigger, standout section titles (regardless of h1/h2/h3 tag) */
+    h1[id],h2[id],h3[id]{font-size:clamp(28px,5vw,44px);line-height:1.15;font-weight:800;letter-spacing:.01em;margin:2.5rem 0 1rem;}
+    h1[id]::after,h2[id]::after,h3[id]::after{content:"";display:block;width:64px;height:6px;border-radius:3px;margin-top:.5rem;background:linear-gradient(90deg,#111,#666)}
+  </style>
 </head>
 <body>
     <!-- Header -->
@@ -85,14 +142,25 @@
         </div>
     </header>
 
+
+
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-title">SERVICES</div>
             <div class="hero-description">Practical, results‑driven counsel across litigation, family law, entertainment, crisis management, and corporate matters.</div>
-            <a href="#services" class="cta-button">Explore Services</a>
         </div>
     </section>
+
+    <nav class="services-tabs" role="tablist" aria-label="Services categories">
+      <div class="tabs-inner">
+        <a class="tab" href="#litigation" role="tab">Litigation, Arbitration & Mediation</a>
+        <a class="tab" href="#family-law" role="tab">Family Law</a>
+        <a class="tab" href="#fashion-entertainment-sports" role="tab">Fashion, Entertainment & Sports</a>
+        <a class="tab" href="#crisis-management-lobbying" role="tab">Crisis Management – Lobbying</a>
+        <a class="tab" href="#corporate-docs-transactions-secu" role="tab">Corporate Documents, Transactions & Secu</a>
+      </div>
+    </nav>
 
     <!-- Services Sections -->
     <section id="services" class="section services-section">
@@ -101,7 +169,7 @@
 
             <!-- 1. Litigation, Arbitration & Mediation -->
             <div class="service-copy fade-in">
-                <h3>Litigation, Arbitration & Mediation</h3>
+                <h3 id="litigation">Litigation, Arbitration & Mediation</h3>
                 <p>On behalf of corporations and individuals, the firm has litigated disputes in a variety of matters involving contract disputes, shareholder derivative suits, libel suits, suits involving the ownership of intellectual property (including the ownership of a “source code” in a computer related case), personal injury cases, matrimonial, and white collar criminal defense cases throughout the country.</p>
                 <p>Representative of our firm’s broad experience in the litigation area is the firm’s success in obtaining one of the largest private libel verdicts in New Jersey’s history, the successful resolution of a multimillion dollar probate matter in Palm Beach, Florida, and the successful handling of white collar criminal defense matters in federal courts in New York, Florida, and Las Vegas, Nevada.</p>
                 <p>Most notably, we have achieved successes against Amazon, Kevin Porter, Miami New Times, Women Model Management, New York City, Montel Williams, the New York Yankees (jury verdict of over $1 million dollars), Steven Seagal, Don King Productions, Shelly Finkel, Gary Shaw, Danny De Vito, Anna Nicole Smith, Fabio, John Thomas Financial, Trump Model Management, Snooki, Rick Ross, Magic Johnson, Atlantic City Housing Authority (Arbitration Award over $2 million dollars), LA Times, Pro Elite, Wladimir Klitschko, and countless others reflected in Mr. Hantman’s Resume.</p>
@@ -113,7 +181,7 @@
 
             <!-- 2. Family Law -->
             <div class="service-copy fade-in">
-                <h3>Family Law</h3>
+                <h3 id="family-law">Family Law</h3>
                 <p>Our mediators focus on techniques to assist the parties to reach their own decisions. Our mediators understand that their role is to advise the parties on ‘how’ to choose, not ‘what’ to choose. A choice is, in and of itself, a negotiation between many moving parts. We assist the parties to find the choices that make sense, fulfill needs and interconnect positively with the choices of others who will be impacted by change.</p>
                 <h3>International Divorce</h3>
                 <p>International divorce is a highly specialized field of law and requires both experience and contacts in overseas governments and law. Our global team of experienced attorneys act effectively and decisively to resolve all international divorce issues including child custody and complex financial matters.</p>
@@ -123,20 +191,20 @@
 
             <!-- 3. Fashion, Entertainment & Sports -->
             <div class="service-copy fade-in">
-                <h3>Fashion, Entertainment & Sports</h3>
+                <h3 id="fashion-entertainment-sports">Fashion, Entertainment & Sports</h3>
                 <p>The firm also represents, or has represented, bookers, agents, and principals of many of the major modeling agencies. The firm not only prepares, reviews, and negotiates contracts regarding all contractual aspects of the business, such as contracts between the agency and models, bookers and the agency, and the agency and third parties, but perhaps, more importantly, handles litigation involving the interpretation, enforceability, and breaches of these contracts.</p>
                 <p>Hantman & Associates also specializes in resolving or litigating issues that arise when bookers and/or models leave one agency for another. The firm has been successful in recouping all advances and damages occasioned by this type of “defection” and/or defending against these types of actions that are all too common in the fashion industry.</p>
             </div>
 
             <!-- 4. Crisis Management & Lobbying -->
             <div class="service-copy fade-in">
-                <h3>Crisis Management & Lobbying</h3>
+                <h3 id="crisis-management-lobbying">Crisis Management & Lobbying</h3>
                 <p>Hantman & Associates recognizes that often a client’s problem not only involves but transcends legal issues and that an effective coordinated effort to obtain a result may often involve an association with investigative firms involving former NAVY SEALS, FBI, DEA, CIA and Law Enforcement Personnel and public relation firms.</p>
             </div>
 
             <!-- 5. Corporate Documents, Transactions & Securities -->
             <div class="service-copy fade-in">
-                <h3>Corporate Documents, Transactions & Securities</h3>
+                <h3 id="corporate-docs-transactions-secu">Corporate Documents, Transactions & Securities</h3>
                 <p>Hantman & Associates recognizes the importance of avoiding litigation and protecting the business and legal rights of its clients. The first step is through the preparation of contracts and corporate documents that are clear and concise coupled with the experience and knowledge to properly advise clients.</p>
                 <p>In this regard the firm represents and advises all types of business entities, including sole proprietorships, partnerships, limited liability companies and closely held and publicly owned corporations. The firm acts as local counsel for national corporations and many local and regional companies. Our services include corporate formation and finance, corporate reorganizations, mergers and acquisitions, negotiation and preparation of all types of contracts and representation of parties in intracorporate relationships and shareholder disputes. Our clients are engaged in diverse industries including manufacturing, transportation, computer software and hardware, real estate, franchising, sports and entertainment, agencies and professional services. Our firm’s expertise with corporation and LLC’s allows us to craft integrated business and legal solutions for our clients.</p>
                 <p>However, when litigation cannot be avoided, our firm is experienced in representing our corporate clients in business and shareholder disputes, and pursuing and/or defending FINRA claims and defending against SEC Enforcement Actions. Our firm has also successfully pursued Investment Banks and Broker Dealers in lawsuits in both State and Federal Courts including John Thomas Financial and Lighthouse Financial Group.</p>
@@ -166,6 +234,32 @@
             <div class="footer-copyright">© <span id="year"></span> Hantman & Associates</div>
         </div>
     </footer>
+</footer>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.services-tabs .tab'));
+  if(!tabs.length) return;
+  var map = new Map();
+  tabs.forEach(function(a){ var target = document.querySelector(a.getAttribute('href')); if(target){ map.set(target.id, a);} });
+
+  function setActive(id){
+    tabs.forEach(function(a){ a.classList.remove('active'); a.removeAttribute('aria-current'); });
+    var active = map.get(id); if(active){ active.classList.add('active'); active.setAttribute('aria-current','true'); }
+  }
+
+  // Initialize based on hash (if any)
+  if(location.hash && map.has(location.hash.slice(1))){ setActive(location.hash.slice(1)); }
+
+  // Observe headings to update active tab while scrolling
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ setActive(entry.target.id); }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+  map.forEach(function(_, id){ var el = document.getElementById(id); if(el){ observer.observe(el); }});
+})();
+</script>
 </body>
 </html>
